@@ -3,9 +3,10 @@ import { Api } from "../api/Api";
 import { CreateUserPayload, UpdateUserPayload } from "../types/User";
 import { useUserStore } from "../store/userStore";
 import { useEffect } from "react";
+import { UserState } from "../store/userStore";
 
 export function useUsers() {
-  const setUsers = useUserStore((state) => state.setUsers);
+  const setUsers = useUserStore((state: UserState) => state.setUsers);
 
   const query = useQuery({
     queryKey: ["users"],
@@ -23,7 +24,7 @@ export function useUsers() {
 
 export function useCreateUser() {
   const queryClient = useQueryClient();
-  const addUser = useUserStore((state) => state.addUser);
+  const addUser = useUserStore((state: UserState) => state.addUser);
 
   return useMutation({
     mutationFn: (data: CreateUserPayload) => Api.createUser(data),
@@ -35,7 +36,7 @@ export function useCreateUser() {
 
 export function useUpdateUser() {
   const queryClient = useQueryClient();
-  const updateUser = useUserStore((state) => state.updateUser);
+  const updateUser = useUserStore((state: UserState) => state.updateUser);
 
   return useMutation({
     mutationFn: ({ id, data }: { id: string; data: UpdateUserPayload }) =>
@@ -49,7 +50,7 @@ export function useUpdateUser() {
 
 export function useDeleteUser() {
   const queryClient = useQueryClient();
-  const removeUser = useUserStore((state) => state.removeUser);
+  const removeUser = useUserStore((state: UserState) => state.removeUser);
 
   return useMutation({
     mutationFn: (id: string) => Api.deleteUser(id),

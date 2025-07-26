@@ -26,7 +26,7 @@ export function useArticles() {
 
 export function useCreateArticle() {
   const queryClient = useQueryClient();
-  const addArticle = useArticleStore((state) => state.addArticle);
+  const addArticle = useArticleStore((state: ArticleState) => state.addArticle);
 
   return useMutation({
     mutationFn: (data: CreateArticlePayload) => Api.createArticle(data),
@@ -39,7 +39,9 @@ export function useCreateArticle() {
 
 export function useUpdateArticle() {
   const queryClient = useQueryClient();
-  const updateArticle = useArticleStore((state) => state.updateArticle);
+  const updateArticle = useArticleStore(
+    (state: ArticleState) => state.updateArticle
+  );
 
   return useMutation({
     mutationFn: ({ id, data }: { id: string; data: UpdateArticlePayload }) =>
@@ -53,7 +55,9 @@ export function useUpdateArticle() {
 
 export function useDeleteArticle() {
   const queryClient = useQueryClient();
-  const removeArticle = useArticleStore((state) => state.removeArticle);
+  const removeArticle = useArticleStore(
+    (state: ArticleState) => state.removeArticle
+  );
 
   return useMutation({
     mutationFn: (id: string) => Api.deleteArticle(id),
