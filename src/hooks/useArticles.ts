@@ -3,9 +3,12 @@ import { CreateArticlePayload, UpdateArticlePayload } from "../types/Article";
 import { Api } from "../api/Api";
 import { useArticleStore } from "../store/articleStore";
 import { useEffect } from "react";
+import { ArticleState } from "../store/articleStore";
 
 export function useArticles() {
-  const setArticles = useArticleStore((state) => state.setArticles);
+  const setArticles = useArticleStore(
+    (state: ArticleState) => state.setArticles
+  );
 
   const query = useQuery({
     queryKey: ["articles"],
