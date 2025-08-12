@@ -2,7 +2,7 @@ import Menu from "../components/myComponents/primaryMenu";
 import { SearchBarUsers } from "../components/myComponents/search";
 import { MyFilter } from "../components/myComponents/filter";
 import { AddUser } from "@/components/myComponents/add";
-import { CardDemo } from "@/components/myComponents/cardlist";
+import { UserCard } from "@/components/myComponents/cardlist";
 
 export function UserPage() {
   return (
@@ -21,8 +21,8 @@ export function UserPage() {
           <AddUser />
         </div>
       </div>
-      <div>
-        <CardDemo></CardDemo>
+      <div className="!justify-center !flex">
+        <UserCard />
       </div>
     </>
   );

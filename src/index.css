@@ -140,6 +140,26 @@
   .inputform {
     @apply !h-10 !rounded-lg !bg-white !shadow-sm !border-2 !border-blue-500 !pl-2;
   }
+
+  .card {
+    @apply !h-25 !w-full !mr-47.5 !ml-50.5 !mt-10 !rounded-lg !bg-white !shadow-sm;
+  }
+
+  .viewbooks {
+    @apply !bg-primary hover:!text-blue-600 hover:scale-105  cursor-pointer !text-gray-700  !border-blue-500 !border-2 !font-medium !w-25  !rounded-lg  !h-10;
+  }
+
+  .deletebtn {
+    @apply !bg-destructive hover:scale-105  cursor-pointer !text-black/80  !border-red-500 !border-2 !font-medium !w-25  !rounded-lg  !h-10;
+  }
+
+  .editbtn {
+    @apply !bg-background hover:scale-105  cursor-pointer !text-gray-700  !border-blue-500 !border-2 !font-medium !w-25  !rounded-lg  !h-10;
+  }
+
+  .addbook {
+    @apply !bg-primary hover:!text-blue-600 hover:scale-105  cursor-pointer !text-gray-700 !font-medium w-30 flex flex-row items-center !rounded-lg justify-center !h-10 !mt-5 !ml-15;
+  }
 }
 
 @import "tailwindcss/preflight";

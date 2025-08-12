@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useFileUpload } from "@/store/useFileUpload";
 
-export function AddUser() {
+export function EditUser() {
   const {
     preview,
     fileName,
@@ -26,14 +26,14 @@ export function AddUser() {
   return (
     <Dialog>
       <form>
-        <DialogTrigger asChild className="adduser">
-          <Button variant="outline"> Crea Utente </Button>
+        <DialogTrigger asChild className="editbtn">
+          <Button variant="outline"> Modifica</Button>
         </DialogTrigger>
         <DialogContent className="!p-6 !h-auto">
           <DialogHeader>
-            <DialogTitle className="!font-medium">Crea Utente</DialogTitle>
+            <DialogTitle className="!font-medium">Modifica Utente</DialogTitle>
             <DialogDescription>
-              Apporta qui i dati del tuo profilo. Clicca su Crea quando hai
+              Apporta qui i dati del tuo profilo. Clicca su Salva quando hai
               finito.
             </DialogDescription>
           </DialogHeader>
@@ -105,7 +105,7 @@ export function AddUser() {
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>
             <Button type="submit" className="bluebtn">
-              Crea
+              Salva
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -114,7 +114,7 @@ export function AddUser() {
   );
 }
 
-export function AddBook() {
+export function EditBook() {
   const {
     preview,
     fileName,
@@ -127,14 +127,14 @@ export function AddBook() {
   return (
     <Dialog>
       <form>
-        <DialogTrigger asChild className="addbook">
-          <Button variant="outline"> Aggiungi libro </Button>
+        <DialogTrigger asChild className="editbtn">
+          <Button variant="outline">Modifica</Button>
         </DialogTrigger>
         <DialogContent className="!p-6 !h-auto">
           <DialogHeader>
-            <DialogTitle className="!font-medium">Aggiungi libro</DialogTitle>
+            <DialogTitle className="!font-medium">Modifica libro</DialogTitle>
             <DialogDescription>
-              Apporta qui i dati del tuo libro. Clicca su Aggiungi quando hai
+              Apporta qui i dati del tuo libro. Clicca su Salva quando hai
               finito.
             </DialogDescription>
           </DialogHeader>
@@ -224,7 +224,7 @@ export function AddBook() {
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>
             <Button type="submit" className="bluebtn">
-              Aggiungi
+              Salva
             </Button>
           </DialogFooter>
         </DialogContent>
