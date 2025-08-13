@@ -118,47 +118,87 @@
 
 @layer components {
   .menu-list {
-    @apply bg-primary font-medium w-2xs flex flex-row gap-20 items-center rounded-lg justify-center h-10;
+    @apply !bg-primary !font-medium 
+           !w-full sm:!w-50 
+           !flex !flex-row !gap-4 sm:!gap-10 lg:!gap-15
+           !items-center !rounded-lg !justify-center 
+           !h-10 sm:!h-12 lg:!h-10;
   }
 
   .filter {
-    @apply hover:!text-blue-600 hover:scale-105  cursor-pointer !mt-5 !h-10 !w-10 !ml-140 !rounded-lg !bg-primary;
+    @apply hover:!text-blue-600 hover:!scale-105 !cursor-pointer 
+           !mt-3 sm:!mt-5 
+           !h-8 sm:!h-10 !w-8 sm:!w-10 
+           sm:!ml-130 lg:!ml-140
+           !rounded-lg !bg-primary;
   }
 
   .adduser {
-    @apply !bg-primary hover:!text-blue-600 hover:scale-105  cursor-pointer !text-gray-700 !font-medium w-30 flex flex-row items-center !rounded-lg justify-center !h-10 !mt-5 !ml-10;
+    @apply !bg-primary hover:!text-blue-600 hover:!scale-105 !cursor-pointer 
+           !text-gray-700 !font-medium 
+           !w-full sm:!w-40 lg:!w-48 
+           !flex !flex-row !items-center !rounded-lg !justify-center 
+           !h-8 sm:!h-10
+           !mt-3 sm:!mt-5 !ml-4 sm:!ml-10;
   }
 
   .bluebtn {
-    @apply !bg-background !text-black/80 cursor-pointer !font-medium !w-20 !h-10  hover:!bg-background/90 !drop-shadow-2xl !border-blue-500 !border-2 !rounded-lg;
+    @apply !bg-background !text-black/80 !cursor-pointer !font-medium 
+           !w-full sm:!w-20 !h-10 sm:!h-12 
+           hover:!bg-background/90 
+           !drop-shadow-2xl !border-blue-500 !border-2 !rounded-lg;
   }
 
   .whitebtn {
-    @apply !bg-primary !text-black/80 cursor-pointer !font-medium !w-20 !h-10  hover:!bg-muted-foreground/10 !drop-shadow-2xl !border-blue-500 !border-2 !rounded-lg;
+    @apply !bg-primary !text-black/80 !cursor-pointer !font-medium 
+           !w-full sm:!w-20 !h-10 sm:!h-12 
+           hover:!bg-muted-foreground/10 
+           !drop-shadow-2xl !border-blue-500 !border-2 !rounded-lg;
   }
 
   .inputform {
-    @apply !h-10 !rounded-lg !bg-white !shadow-sm !border-2 !border-blue-500 !pl-2;
+    @apply !h-10 sm:!h-12 !rounded-lg !bg-white !shadow-sm !border-2 !border-blue-500 !pl-2;
   }
 
   .card {
-    @apply !h-25 !w-full !mr-47.5 !ml-50.5 !mt-10 !rounded-lg !bg-white !shadow-sm;
+    @apply !w-full sm:!w-4/5 lg:!w-3/4
+           !h-auto sm:!h-24
+           !mx-auto 
+           !mt-6 sm:!mt-10 !rounded-lg !bg-white !shadow-sm;
   }
 
   .viewbooks {
-    @apply !bg-primary hover:!text-blue-600 hover:scale-105  cursor-pointer !text-gray-700  !border-blue-500 !border-2 !font-medium !w-25  !rounded-lg  !h-10;
+    @apply !bg-primary hover:!text-blue-600 hover:!scale-105 !cursor-pointer 
+           !text-gray-700 !border-blue-500 !border-2 !font-medium 
+           !w-full sm:!w-26 lg:!w-30 
+           !rounded-lg 
+           !h-8 sm:!h-10;
   }
 
   .deletebtn {
-    @apply !bg-destructive hover:scale-105  cursor-pointer !text-black/80  !border-red-500 !border-2 !font-medium !w-25  !rounded-lg  !h-10;
+    @apply !bg-destructive hover:!scale-105 !cursor-pointer 
+           !text-black/80 !border-red-500 !border-2 !font-medium 
+           !w-full sm:!w-26 lg:!w-30 
+           !rounded-lg 
+           !h-8 sm:!h-10
+           !mr-8 sm:!mr-10;
   }
 
   .editbtn {
-    @apply !bg-background hover:scale-105  cursor-pointer !text-gray-700  !border-blue-500 !border-2 !font-medium !w-25  !rounded-lg  !h-10;
+    @apply !bg-background hover:!scale-105 !cursor-pointer 
+           !text-gray-700 !border-blue-500 !border-2 !font-medium 
+           !w-full sm:!w-26 lg:!w-30 
+           !rounded-lg 
+           !h-8 sm:!h-10;
   }
 
   .addbook {
-    @apply !bg-primary hover:!text-blue-600 hover:scale-105  cursor-pointer !text-gray-700 !font-medium w-30 flex flex-row items-center !rounded-lg justify-center !h-10 !mt-5 !ml-15;
+    @apply !bg-primary hover:!text-blue-600 hover:!scale-105 !cursor-pointer 
+           !text-gray-700 !font-medium 
+           !w-full sm:!w-40 lg:!w-48 
+           !flex !flex-row !items-center !rounded-lg !justify-center 
+           !h-10 sm:!h-12 
+           !mt-3 sm:!mt-5 !ml-4 sm:!ml-10;
   }
 }
 

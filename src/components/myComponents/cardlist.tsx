@@ -13,14 +13,16 @@ import { DeleteBook, DeleteUser } from "./delete";
 export function UserCard() {
   return (
     <Card className="card">
-      <div className="flex items-center">
-        <img
-          src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-          alt="Immagine profilo"
-          className="!h-25 !rounded-lg"
-        />
-        <p className=" !text-black/80 font-medium !ml-5">Emanuele Giordano</p>
-        <div className="!ml-126.5">
+      <div className="!flex !flex-col sm:!flex-row !items-center sm:!justify-between !gap-4 sm:!gap-6">
+        <div className="!flex !items-center !gap-4">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+            alt="Immagine profilo"
+            className="!h-24 !w-24 !rounded-lg"
+          />
+          <p className="!text-black/80 !font-medium">Emanuele Giordano</p>
+        </div>
+        <div className="!flex !items-center !gap-3 sm:!gap-5">
           <Dialog>
             <DialogTrigger asChild className="viewbooks !bg-primary">
               <Button variant="outline">Libri</Button>
@@ -37,12 +39,8 @@ export function UserCard() {
               </DialogHeader>
             </DialogContent>
           </Dialog>
-        </div>
-        <div className="!ml-5">
-          <EditUser></EditUser>
-        </div>
-        <div className="!ml-5">
-          <DeleteUser></DeleteUser>
+          <EditUser />
+          <DeleteUser />
         </div>
       </div>
     </Card>
@@ -52,14 +50,16 @@ export function UserCard() {
 export function BookCard() {
   return (
     <Card className="card">
-      <div className="flex items-center">
-        <img
-          src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-          alt="Immagine libro"
-          className="!h-25 !rounded-lg"
-        />
-        <p className=" !text-black/80 font-medium !ml-5">Cenerentola</p>
-        <div className="!ml-110">
+      <div className="!flex !flex-col sm:!flex-row !items-center sm:!justify-between !gap-4 sm:!gap-6">
+        <div className="!flex !items-center !gap-4">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+            alt="Immagine libro"
+            className="!h-24 !w-24 !rounded-lg"
+          />
+          <p className="!text-black/80 !font-medium">Cenerentola</p>
+        </div>
+        <div className="!flex !items-center !gap-3 !sm:!gap-5 !flex-wrap">
           <Dialog>
             <DialogTrigger asChild className="viewbooks">
               <Button variant="outline">Descrizione</Button>
@@ -71,33 +71,26 @@ export function BookCard() {
                   Quis commodi libero reiciendis fugiat. Nostrum maiores et et
                   pariatur earum. Nulla perferendis consequatur. Quisquam enim
                   nihil neque deserunt. Voluptatem nihil labore nam numquam.
-                  Voluptatem aliquam sequi deleniti nobis alias
-                  mollitia.\nPerspiciatis in esse aut. Quod sed odio sunt eius
-                  assumenda perferendis. Eum et corrupti esse quia aut eos.
-                  Consequatur nobis voluptas soluta non et omnis quaerat
-                  dolorem.\nNisi vero distinctio unde mollitia. Vel deserunt
-                  quos maiores laborum aut inventore ducimus perspiciatis. Quo
-                  ipsa sed in et perspiciatis ducimus quisquam totam dicta.
-                  Blanditiis dicta odio. Necessitatibus ratione mollitia et
-                  natus natus corporis.
+                  Voluptatem aliquam sequi deleniti nobis alias mollitia.
+                  Perspiciatis in esse aut. Quod sed odio sunt eius assumenda
+                  perferendis. Eum et corrupti esse quia aut eos. Consequatur
+                  nobis voluptas soluta non et omnis quaerat dolorem. Nisi vero
+                  distinctio unde mollitia. Vel deserunt quos maiores laborum
+                  aut inventore ducimus perspiciatis. Quo ipsa sed in et
+                  perspiciatis ducimus quisquam totam dicta. Blanditiis dicta
+                  odio. Necessitatibus ratione mollitia et natus natus corporis.
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
           </Dialog>
-        </div>
-        <div>
           <button
             onClick={() => window.open("https://sscnapoli.it/", "_blank")}
-            className="viewbooks !ml-5"
+            className="viewbooks"
           >
             Acquista
           </button>
-        </div>
-        <div className="!ml-5">
-          <EditBook></EditBook>
-        </div>
-        <div className="!ml-5">
-          <DeleteBook></DeleteBook>
+          <EditBook />
+          <DeleteBook />
         </div>
       </div>
     </Card>
