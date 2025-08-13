@@ -127,10 +127,11 @@
 
   .filter {
     @apply hover:!text-blue-600 hover:!scale-105 !cursor-pointer 
-           !mt-3 sm:!mt-5 
-           !h-8 sm:!h-10 !w-8 sm:!w-10 
-           sm:!ml-130 lg:!ml-140
-           !rounded-lg !bg-primary;
+    !mt-3 sm:!mt-5 
+    !h-4 sm:!h-6 md:!h-8 lg:!h-10
+    !w-4 sm:!w-6 md:!w-8 lg:!w-10
+    !rounded-lg !bg-primary 
+    !ml-30 sm:!ml-60 md:!ml-120 lg:!ml-140;
   }
 
   .adduser {

@@ -15,13 +15,17 @@ export function MyFilter() {
   const [position, setPosition] = React.useState("bottom");
 
   return (
-    <DropdownMenu > 
+    <DropdownMenu>
       <DropdownMenuTrigger
         asChild
         className="!dot-primary-color hover:!text-white flex justify-center items-center"
       >
-        <Button variant={"outline"} size="default" className="filter" >
-          <Filter/>
+        <Button
+          variant={"outline"}
+          size="default"
+          className="filter  !px-4 !py-2 !h-10 !w-10 !flex !justify-center !items-center"
+        >
+          <Filter />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="!w-40">
