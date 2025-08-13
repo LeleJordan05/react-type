@@ -141,7 +141,7 @@
            !flex !flex-row !items-center !rounded-lg !justify-center 
            !h-8 sm:!h-10
            !mt-3 sm:!mt-5 !ml-4 sm:!ml-10
-           !mr-10;
+           !mr-30;
   }
 
   .bluebtn {
@@ -201,7 +201,7 @@
            !flex !flex-row !items-center !rounded-lg !justify-center 
            !h-8 sm:!h-10
            !mt-3 sm:!mt-5 !ml-4 sm:!ml-10
-           !mr-10;
+           !mr-30;
   }
 }
 

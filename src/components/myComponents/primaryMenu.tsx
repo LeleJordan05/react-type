@@ -1,53 +1,65 @@
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "../ui/navigation-menu"
+} from "../ui/navigation-menu";
 
 export default function Menu() {
   const navigate = useNavigate();
   const location = useLocation();
 
-const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <NavigationMenu className="!ml-10 !mt-5">
+    <NavigationMenu className="!ml-30 !mt-5">
       <NavigationMenuList className="menu-list">
         <NavigationMenuItem>
-          <NavigationMenuTrigger onClick={() => navigate("/utenti") }
+          <NavigationMenuTrigger
+            onClick={() => navigate("/utenti")}
             className={`
               cursor-pointer px-4 py-2 rounded-lg transition-all duration-300 ease-in-out
               relative overflow-hidden group
               hover:!text-blue-600 hover:scale-105 
-              ${isActive("/utenti") 
-                ? "!text-blue-600" 
-                : "!text-gray-700 hover:!text-blue-600"
+              ${
+                isActive("/utenti")
+                  ? "!text-blue-600"
+                  : "!text-gray-700 hover:!text-blue-600"
               }
-            `}>Utenti<span 
+            `}
+          >
+            Utenti
+            <span
               className={`
                 absolute bottom-0 left-0 h-0.5 bg-blue-600 
                 ${isActive("/utenti") ? "w-full" : "w-0 "}
               `}
-            /></NavigationMenuTrigger>
+            />
+          </NavigationMenuTrigger>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger onClick={() => navigate("/libri")}
-              className={`
+          <NavigationMenuTrigger
+            onClick={() => navigate("/libri")}
+            className={`
               cursor-pointer px-4 py-2 rounded-lg transition-all duration-300 ease-in-out
               relative overflow-hidden group
               hover:!text-blue-600 hover:scale-105 
-              ${isActive("/libri") 
-                ? "!text-blue-600" 
-                : "!text-gray-700 hover:!text-blue-600"
+              ${
+                isActive("/libri")
+                  ? "!text-blue-600"
+                  : "!text-gray-700 hover:!text-blue-600"
               }
-            `}>Libri<span 
+            `}
+          >
+            Libri
+            <span
               className={`
                 absolute bottom-0 left-0 h-0.5 bg-blue-600 
                 ${isActive("/libri") ? "w-full" : "w-0 "}
               `}
-            /></NavigationMenuTrigger>
+            />
+          </NavigationMenuTrigger>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
