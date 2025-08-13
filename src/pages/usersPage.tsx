@@ -7,17 +7,15 @@ import { UserCard } from "@/components/myComponents/cardlist";
 export function UserPage() {
   return (
     <>
-      <div className="flex flex-row">
+      <div className="!flex !flex-row !justify-between">
         <div>
           <Menu />
         </div>
-        <div>
+        <div className="">
           <SearchBarUsers />
         </div>
         <div>
           <MyFilter />
-        </div>
-        <div>
           <AddUser />
         </div>
       </div>

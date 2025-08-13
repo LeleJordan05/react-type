@@ -7,14 +7,14 @@ export function SearchBarUsers() {
       <Search
         size={18}
         strokeWidth={1.8}
-        className="absolute !ml-53 !mt-8 !text-slate-500 pointer-events-none"
+        className="absolute  !mt-8 !text-slate-500 pointer-events-none"
         aria-hidden
       />
 
       <Input
         type="text"
         placeholder="Cerca un utente..."
-        className="!pl-10 !h-10 !ml-50 !mt-5 !rounded-lg !bg-white shadow-sm"
+        className="!pl-10 !h-10  !mt-5 !rounded-lg !bg-white shadow-sm"
       />
     </>
   );
