@@ -15,7 +15,7 @@ export function UserCard() {
     <Card className="card">
       <div className="flex items-center">
         <img
-          src="user.jpg"
+          src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
           alt="Immagine profilo"
           className="!h-25 !rounded-lg"
         />
@@ -54,7 +54,7 @@ export function BookCard() {
     <Card className="card">
       <div className="flex items-center">
         <img
-          src="user.jpg"
+          src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
           alt="Immagine libro"
           className="!h-25 !rounded-lg"
         />
