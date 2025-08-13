@@ -11,10 +11,10 @@ export function UserPage() {
         <div>
           <Menu />
         </div>
-        <div className="">
+        <div className="w-120">
           <SearchBarUsers />
         </div>
-        <div>
+        <div className="flex flex-row">
           <MyFilter />
           <AddUser />
         </div>

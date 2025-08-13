@@ -6,14 +6,14 @@ import { BookCard } from "@/components/myComponents/cardlist";
 export function BookPage() {
   return (
     <>
-      <div className="flex flex-row">
+      <div className="!flex !flex-row !justify-between">
         <div>
           <Menu />
         </div>
-        <div>
+        <div className="!mt-5 !w-130">
           <SearchBarBooks />
         </div>
-        <div className="!ml-145">
+        <div>
           <AddBook />
         </div>
       </div>
