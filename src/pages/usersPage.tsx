@@ -1,8 +1,8 @@
 import Menu from "../components/myComponents/primaryMenu";
 import { SearchBarUsers } from "../components/myComponents/search";
 import { MyFilter } from "../components/myComponents/filter";
-import { AddUser } from "@/components/myComponents/add";
-import { UserCard } from "@/components/myComponents/cardlist";
+import { AddUser } from "@/components/myComponents/add"; // ✅ ora prende quello con RHF
+import { UserList } from "@/components/myComponents/userlist"; // ✅ nuova lista utenti dinamica
 
 export function UserPage() {
   return (
@@ -11,16 +11,17 @@ export function UserPage() {
         <div>
           <Menu />
         </div>
-        <div className="w-120">
+        <div className="!w-120">
           <SearchBarUsers />
         </div>
-        <div className="flex flex-row">
+        <div className="!flex !flex-row">
           <MyFilter />
           <AddUser />
         </div>
       </div>
+
       <div className="!justify-center !flex">
-        <UserCard />
+        <UserList />
       </div>
     </>
   );

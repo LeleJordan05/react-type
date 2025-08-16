@@ -1,7 +1,7 @@
 import { AddBook } from "@/components/myComponents/add";
 import Menu from "../components/myComponents/primaryMenu";
 import { SearchBarBooks } from "../components/myComponents/search";
-import { BookCard } from "@/components/myComponents/cardlist";
+import { BookList } from "@/components/myComponents/bookslist";
 
 export function BookPage() {
   return (
@@ -18,7 +18,7 @@ export function BookPage() {
         </div>
       </div>
       <div className="!justify-center !flex">
-        <BookCard />
+        <BookList />
       </div>
     </>
   );

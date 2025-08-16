@@ -29,7 +29,9 @@ export function DeleteUser() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="whitebtn">Cancella</AlertDialogCancel>
-          <AlertDialogAction className="deletebtn">Continua</AlertDialogAction>
+          <AlertDialogAction className="deletebtndialog">
+            Continua
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -54,7 +56,9 @@ export function DeleteBook() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="whitebtn">Cancella</AlertDialogCancel>
-          <AlertDialogAction className="deletebtn">Continua</AlertDialogAction>
+          <AlertDialogAction className="deletebtndialog">
+            Continua
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

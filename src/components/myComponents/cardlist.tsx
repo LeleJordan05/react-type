@@ -10,17 +10,27 @@ import {
 } from "../ui/dialog";
 import { EditBook, EditUser } from "./edit";
 import { DeleteBook, DeleteUser } from "./delete";
-export function UserCard() {
+import { User } from "@/types/User";
+import { Article } from "@/types/Article";
+
+type UserProps = {
+  user: User;
+};
+
+export function UserCard({ user }: UserProps) {
   return (
-    <Card className="card">
+    <Card className="!card">
       <div className="!flex !flex-col sm:!flex-row !items-center sm:!justify-between !gap-4 sm:!gap-6">
         <div className="!flex !items-center !gap-4">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-            alt="Immagine profilo"
+            src={
+              user.avatar ||
+              "https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+            }
+            alt={user.name}
             className="!h-24 !w-24 !rounded-lg"
           />
-          <p className="!text-black/80 !font-medium">Emanuele Giordano</p>
+          <p className="!text-black/80 !font-medium">{user.name}</p>
         </div>
         <div className="!flex !items-center !gap-3 sm:!gap-5">
           <Dialog>
@@ -33,35 +43,78 @@ export function UserCard() {
                   Libri in vendita
                 </DialogTitle>
                 <DialogDescription>
-                  Apporta qui i dati del tuo libro. Clicca su Aggiungi quando
-                  hai finito.
+                  <UserBookCard></UserBookCard>
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
           </Dialog>
-          <EditUser />
-          <DeleteUser />
+          <EditUser /> <DeleteUser />
         </div>
       </div>
     </Card>
   );
 }
 
-export function BookCard() {
+type BookProps = {
+  book: Article;
+};
+
+export function BookCard({ book }: BookProps) {
   return (
-    <Card className="card">
+    <Card className="!card">
+      <div className="!flex !flex-col sm:!flex-row !items-center sm:!justify-between !gap-4 sm:!gap-6">
+        <div className="!flex !items-center !gap-4">
+          <img
+            src={book.picture}
+            alt={`Immagine ${book.name}`}
+            className="!h-24 !w-24 !rounded-lg"
+          />
+          <p className="!text-black/80 !font-medium">{book.name}</p>
+        </div>
+
+        <div className="!flex !items-center !gap-3 !sm:!gap-5 !flex-wrap">
+          <Dialog>
+            <DialogTrigger asChild className="viewbooks">
+              <Button variant="outline">Descrizione</Button>
+            </DialogTrigger>
+            <DialogContent className="!p-6 !h-auto">
+              <DialogHeader>
+                <DialogTitle className="!font-medium">Descrizione</DialogTitle>
+                <DialogDescription>{book.description}</DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+
+          <button
+            onClick={() => window.open(book.buyUrl, "_blank")}
+            className="viewbooks"
+          >
+            Acquista
+          </button>
+
+          <EditBook />
+          <DeleteBook />
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+export function UserBookCard() {
+  return (
+    <Card className="dialogcard">
       <div className="!flex !flex-col sm:!flex-row !items-center sm:!justify-between !gap-4 sm:!gap-6">
         <div className="!flex !items-center !gap-4">
           <img
             src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
             alt="Immagine libro"
-            className="!h-24 !w-24 !rounded-lg"
+            className="!h-12 !w-12 !rounded-lg"
           />
           <p className="!text-black/80 !font-medium">Cenerentola</p>
         </div>
         <div className="!flex !items-center !gap-3 !sm:!gap-5 !flex-wrap">
           <Dialog>
-            <DialogTrigger asChild className="viewbooks">
+            <DialogTrigger asChild className="btndialogbook">
               <Button variant="outline">Descrizione</Button>
             </DialogTrigger>
             <DialogContent className="!p-6 !h-auto">
@@ -85,12 +138,10 @@ export function BookCard() {
           </Dialog>
           <button
             onClick={() => window.open("https://sscnapoli.it/", "_blank")}
-            className="viewbooks"
+            className="btndialogbook !mr-5"
           >
             Acquista
           </button>
-          <EditBook />
-          <DeleteBook />
         </div>
       </div>
     </Card>
