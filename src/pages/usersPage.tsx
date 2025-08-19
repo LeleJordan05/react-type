@@ -1,8 +1,8 @@
 import Menu from "../components/myComponents/primaryMenu";
 import { SearchBarUsers } from "../components/myComponents/search";
 import { MyFilter } from "../components/myComponents/filter";
-import { AddUser } from "@/components/myComponents/add"; // ✅ ora prende quello con RHF
-import { UserList } from "@/components/myComponents/userlist"; // ✅ nuova lista utenti dinamica
+import { AddUser } from "@/components/myComponents/add";
+import { UserList } from "@/components/myComponents/userlist";
 
 export function UserPage() {
   return (

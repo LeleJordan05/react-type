@@ -146,14 +146,14 @@
 
   .bluebtn {
     @apply !bg-background !text-black/80 !cursor-pointer !font-medium 
-           !w-full sm:!w-20 !h-8 sm:!h-10 
+           !w-full sm:!w-25 !h-8 sm:!h-10 
            hover:!bg-background/90 
            !drop-shadow-2xl !border-blue-500 !border-2 !rounded-lg;
   }
 
   .whitebtn {
     @apply !bg-primary !text-black/80 !cursor-pointer !font-medium 
-           !w-full sm:!w-20 !h-8 sm:!h-10
+           !w-full sm:!w-25 !h-8 sm:!h-10
            hover:!bg-muted-foreground/10 
            !drop-shadow-2xl !border-blue-500 !border-2 !rounded-lg;
   }
@@ -224,6 +224,10 @@
            !w-full sm:!w-20 
            !rounded-lg 
            !h-8 sm:!h-10;
+  }
+
+  .errormessage {
+    @apply !text-red-500 !text-sm !-mt-2;
   }
 }
 

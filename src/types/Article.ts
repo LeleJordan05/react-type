@@ -3,7 +3,7 @@ export interface Article {
   name: string;
   picture: string;
   description: string;
-  selledId: string;
+  sellerId: string;
   buyUrl: string;
   createdAt: string;
 }

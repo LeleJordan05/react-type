@@ -13,14 +13,23 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { useFileUpload } from "@/store/useFileUpload";
-import { useCreateUser } from "@/hooks/useUsers";
+import { useCreateUser, useUsers } from "@/hooks/useUsers";
 import { useCreateArticle } from "@/hooks/useArticles";
 import { CreateUserPayload } from "@/types/User";
 import { CreateArticlePayload } from "@/types/Article";
+import { useAddStore } from "@/store/useAddDialog";
 
 export function AddUser() {
-  const { register, handleSubmit, reset } = useForm<CreateUserPayload>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm<CreateUserPayload>();
   const { mutate: createUser, isPending } = useCreateUser();
+  const { isOpen, close } = useAddStore();
   const {
     preview,
     fileName,
@@ -31,6 +40,13 @@ export function AddUser() {
   } = useFileUpload();
 
   const onSubmit = (data: CreateUserPayload) => {
+    if (!preview) {
+      setError("avatar" as any, {
+        type: "required",
+        message: "La foto è obbligatoria",
+      });
+      return;
+    }
     createUser(
       {
         name: data.name,
@@ -47,9 +63,20 @@ export function AddUser() {
   };
 
   return (
-    <Dialog>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => {
+        if (!open) {
+          reset();
+          clearFile();
+        }
+        !open ? close() : undefined;
+      }}
+    >
       <DialogTrigger asChild className="adduser">
-        <Button variant="outline">Crea Utente</Button>
+        <Button variant="outline" onClick={() => useAddStore.getState().open()}>
+          Crea Utente
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="!p-6 !h-auto">
@@ -67,9 +94,12 @@ export function AddUser() {
               id="photo"
               type="file"
               accept="image/*"
-              className="hidden"
+              className="inputform hidden"
               ref={fileInputRef}
-              onChange={handleFileChange}
+              onChange={(e) => {
+                handleFileChange(e);
+                clearErrors("avatar");
+              }}
             />
             <div className="flex items-center gap-2 inputform">
               <Button
@@ -96,6 +126,9 @@ export function AddUser() {
                 className="!h-24 !w-24 rounded-full !object-cover !border"
               />
             )}
+            {errors.avatar && (
+              <span className="errormessage">{errors.avatar.message}</span>
+            )}
           </div>
 
           <div className="grid gap-3">
@@ -103,8 +136,11 @@ export function AddUser() {
             <Input
               id="name"
               className="inputform"
-              {...register("name", { required: true })}
+              {...register("name", { required: "Il nome è obbligatorio" })}
             />
+            {errors.name && (
+              <span className="errormessage">{errors.name.message}</span>
+            )}
           </div>
 
           <div className="grid gap-3">
@@ -113,8 +149,13 @@ export function AddUser() {
               id="birthdate"
               type="date"
               className="inputform"
-              {...register("birthdate", { required: true })}
+              {...register("birthdate", {
+                required: "Inserire data di nascita",
+              })}
             />
+            {errors.birthdate && (
+              <span className="errormessage">{errors.birthdate.message}</span>
+            )}
           </div>
 
           <DialogFooter className="!pt-7">
@@ -132,8 +173,17 @@ export function AddUser() {
 }
 
 export function AddBook() {
-  const { register, handleSubmit, reset } = useForm<CreateArticlePayload>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm<CreateArticlePayload>();
   const { mutate: createArticle, isPending } = useCreateArticle();
+  const { data: users, isLoading } = useUsers();
+  const { isOpen, close } = useAddStore();
 
   const {
     preview,
@@ -145,13 +195,20 @@ export function AddBook() {
   } = useFileUpload();
 
   const onSubmit = (data: CreateArticlePayload) => {
+    if (!preview) {
+      setError("picture" as any, {
+        type: "required",
+        message: "La foto è obbligatoria",
+      });
+      return;
+    }
     createArticle(
       {
         name: data.name,
         description: data.description,
         buyUrl: data.buyUrl,
         picture: preview ?? "",
-        selledId: "1", // 🔹 lo gestisci tu o lo prendi da select
+        sellerId: data.sellerId,
       },
       {
         onSuccess: () => {
@@ -163,9 +220,20 @@ export function AddBook() {
   };
 
   return (
-    <Dialog>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => {
+        if (!open) {
+          reset();
+          clearFile();
+        }
+        !open ? close() : undefined;
+      }}
+    >
       <DialogTrigger asChild className="addbook">
-        <Button variant="outline">Aggiungi libro</Button>
+        <Button variant="outline" onClick={() => useAddStore.getState().open()}>
+          Aggiungi libro
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="!p-6 !h-auto">
@@ -178,7 +246,6 @@ export function AddBook() {
             </DialogDescription>
           </DialogHeader>
 
-          {/* Foto */}
           <div className="grid gap-3">
             <Label htmlFor="photo">Foto libro</Label>
             <Input
@@ -187,7 +254,10 @@ export function AddBook() {
               accept="image/*"
               className="inputform hidden"
               ref={fileInputRef}
-              onChange={handleFileChange}
+              onChange={(e) => {
+                handleFileChange(e);
+                clearErrors("picture");
+              }}
             />
             <div className="flex items-center gap-2 inputform">
               <Button
@@ -214,6 +284,9 @@ export function AddBook() {
                 className="!h-24 !w-24 rounded-full !object-cover !border"
               />
             )}
+            {errors.picture && (
+              <span className="errormessage">{errors.picture.message}</span>
+            )}
           </div>
 
           <div className="grid gap-3">
@@ -221,8 +294,11 @@ export function AddBook() {
             <Input
               id="name"
               className="inputform"
-              {...register("name", { required: true })}
+              {...register("name", { required: "Il nome è obbligatorio" })}
             />
+            {errors.name && (
+              <span className="errormessage">{errors.name.message}</span>
+            )}
           </div>
 
           <div className="grid gap-3">
@@ -230,8 +306,18 @@ export function AddBook() {
             <Input
               id="descrizione"
               className="inputform"
-              {...(register("description"), { required: true })}
+              {...register("description", {
+                required: "La descrizione è obbligatoria",
+                maxLength: {
+                  value: 500,
+                  message:
+                    "La descrizione può contenere al massimo 500 caratteri",
+                },
+              })}
             />
+            {errors.description && (
+              <span className="errormessage">{errors.description.message}</span>
+            )}
           </div>
 
           <div className="grid gap-3">
@@ -239,8 +325,37 @@ export function AddBook() {
             <Input
               id="link"
               className="inputform"
-              {...(register("buyUrl"), { required: true })}
+              {...register("buyUrl", {
+                required: "Il link è obbligatorio",
+                pattern: {
+                  value: /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i,
+                  message:
+                    "Inserisci un URL valido (deve iniziare con http o https)",
+                },
+              })}
             />
+            {errors.buyUrl && (
+              <span className="errormessage">{errors.buyUrl.message}</span>
+            )}
+          </div>
+          <div className="grid gap-3">
+            <Label htmlFor="sellerId">Venditore</Label>
+            <select
+              id="sellerId"
+              className="inputform rounded p-2"
+              {...register("sellerId", { required: "Associare ad un utente" })}
+              disabled={isLoading}
+            >
+              <option value="">-- Seleziona un utente --</option>
+              {users?.map((user: any) => (
+                <option key={user.id} value={user.id}>
+                  {user.name}
+                </option>
+              ))}
+            </select>
+            {errors.sellerId && (
+              <span className="errormessage">{errors.sellerId.message}</span>
+            )}
           </div>
 
           <DialogFooter className="!pt-7">
