@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Filter } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 export function MyFilter() {
   const [position, setPosition] = React.useState("bottom");
@@ -23,7 +23,7 @@ export function MyFilter() {
         <Button
           variant={"outline"}
           size="default"
-          className="filter  !px-4 !py-2 !h-10 !w-10 !flex !justify-center !items-center"
+          className="filter !px-4 !py-2 !h-10 !w-10 !flex !justify-center !items-center"
         >
           <Filter />
         </Button>

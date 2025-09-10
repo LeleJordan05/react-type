@@ -7,11 +7,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import { EditBook, EditUser } from "./edit";
+} from "@/components/ui/dialog";
+import { EditBook, EditUser } from "@/components/myComponents/edit";
 import { DeleteBook, DeleteUser } from "./delete";
 import { User } from "@/types/User";
-import { Article } from "@/types/Article";
+import { Book } from "@/types/Book";
 
 type UserProps = {
   user: User;
@@ -56,7 +56,7 @@ export function UserCard({ user }: UserProps) {
 }
 
 type BookProps = {
-  book: Article;
+  book: Book;
 };
 
 export function BookCard({ book }: BookProps) {

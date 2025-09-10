@@ -4,7 +4,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "../ui/navigation-menu";
+} from "@/components/ui/navigation-menu";
 
 export default function Menu() {
   const navigate = useNavigate();

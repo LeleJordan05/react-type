@@ -1,6 +1,6 @@
-import Menu from "../components/myComponents/primaryMenu";
-import { SearchBarUsers } from "../components/myComponents/search";
-import { MyFilter } from "../components/myComponents/filter";
+import Menu from "@/components/myComponents/primaryMenu";
+import { SearchBarUsers } from "@/components/myComponents/search";
+import { MyFilter } from "@/components/myComponents/filter";
 import { AddUser } from "@/components/myComponents/add";
 import { UserList } from "@/components/myComponents/userlist";
 

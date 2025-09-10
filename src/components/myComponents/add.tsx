@@ -14,9 +14,9 @@ import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { useFileUpload } from "@/store/useFileUpload";
 import { useCreateUser, useUsers } from "@/hooks/useUsers";
-import { useCreateArticle } from "@/hooks/useArticles";
+import { useCreateBook } from "@/hooks/useBooks";
 import { CreateUserPayload } from "@/types/User";
-import { CreateArticlePayload } from "@/types/Article";
+import { CreateBookPayload } from "@/types/Book";
 import { useAddStore } from "@/store/useAddDialog";
 
 export function AddUser() {
@@ -180,8 +180,8 @@ export function AddBook() {
     setError,
     clearErrors,
     formState: { errors },
-  } = useForm<CreateArticlePayload>();
-  const { mutate: createArticle, isPending } = useCreateArticle();
+  } = useForm<CreateBookPayload>();
+  const { mutate: createArticle, isPending } = useCreateBook();
   const { data: users, isLoading } = useUsers();
   const { isOpen, close } = useAddStore();
 
@@ -194,7 +194,7 @@ export function AddBook() {
     clearFile,
   } = useFileUpload();
 
-  const onSubmit = (data: CreateArticlePayload) => {
+  const onSubmit = (data: CreateBookPayload) => {
     if (!preview) {
       setError("picture" as any, {
         type: "required",

@@ -1,6 +1,6 @@
 import { AddBook } from "@/components/myComponents/add";
-import Menu from "../components/myComponents/primaryMenu";
-import { SearchBarBooks } from "../components/myComponents/search";
+import Menu from "@/components/myComponents/primaryMenu";
+import { SearchBarBooks } from "@/components/myComponents/search";
 import { BookList } from "@/components/myComponents/bookslist";
 
 export function BookPage() {
