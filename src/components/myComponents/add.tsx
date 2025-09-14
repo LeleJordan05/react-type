@@ -232,14 +232,14 @@ export function AddBook() {
     >
       <DialogTrigger asChild className="addbook">
         <Button variant="outline" onClick={() => useAddStore.getState().open()}>
-          Aggiungi libro
+          Aggiungi Libro
         </Button>
       </DialogTrigger>
 
       <DialogContent className="!p-6 !h-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
           <DialogHeader>
-            <DialogTitle className="!font-medium">Aggiungi libro</DialogTitle>
+            <DialogTitle className="!font-medium">Aggiungi Libro</DialogTitle>
             <DialogDescription>
               Apporta qui i dati del tuo libro. Clicca su Aggiungi quando hai
               finito.

@@ -13,24 +13,24 @@ export function UserCardSkeleton() {
         </div>
 
         {/* Bottoni / Azioni */}
-        <div className="!flex !items-center !gap-3 !sm:!gap-5 !flex-wrap">
+        <div className="!flex !items-center !gap-5  !flex-wrap">
           <Skeleton
             className="!w-full sm:!w-26 lg:!w-30 
            !rounded-lg 
-           !h-8 sm:!h-10;"
+           !h-10 "
           />{" "}
           {/* libri */}
           <Skeleton
             className="!w-full sm:!w-26 lg:!w-30 
            !rounded-lg 
-           !h-8 sm:!h-10;"
+           !h-10 "
           />{" "}
           {/* edit */}
           <Skeleton
             className="!w-full sm:!w-26 lg:!w-30 
            !rounded-lg 
-           !h-8 sm:!h-10
-           !mr-8 sm:!mr-10;"
+           !h-10 
+           !mr-10 "
           />{" "}
           {/* delete */}
         </div>
