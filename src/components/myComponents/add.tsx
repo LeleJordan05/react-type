@@ -25,6 +25,7 @@ export function AddUser() {
     handleSubmit,
     reset,
     setError,
+    setValue,
     clearErrors,
     formState: { errors },
   } = useForm<CreateUserPayload>();
@@ -63,7 +64,7 @@ export function AddUser() {
   };
 
   return (
-    <Dialog
+    <Dialog 
       open={isOpen}
       onOpenChange={(open) => {
         if (!open) {
@@ -79,10 +80,10 @@ export function AddUser() {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="!p-6 !h-auto">
+      <DialogContent className="p-6 h-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
           <DialogHeader>
-            <DialogTitle className="!font-medium">Crea Utente</DialogTitle>
+            <DialogTitle className="font-medium">Crea Utente</DialogTitle>
             <DialogDescription>
               Inserisci i dati del tuo profilo e clicca su Crea.
             </DialogDescription>
@@ -90,14 +91,18 @@ export function AddUser() {
 
           <div className="grid gap-3">
             <Label htmlFor="photo">Foto profilo</Label>
+            {/* Hidden field registered with RHF to surface validation errors */}
+            <input type="hidden" {...register("avatar", { required: "La foto è obbligatoria" })} />
             <Input
               id="photo"
               type="file"
               accept="image/*"
               className="inputform hidden"
               ref={fileInputRef}
+              disabled={!!fileName}
               onChange={(e) => {
                 handleFileChange(e);
+                setValue("avatar" as any, e.target.files && e.target.files.length > 0 ? "selected" : "");
                 clearErrors("avatar");
               }}
             />
@@ -105,15 +110,19 @@ export function AddUser() {
               <Button
                 type="button"
                 onClick={openFileDialog}
-                className="!w-70 !pl-11 cursor-pointer"
+                disabled={!!fileName}
+                className="w-full text-black cursor-pointer"
               >
                 {fileName ?? "Seleziona una foto"}
               </Button>
               {fileName && (
                 <button
                   type="button"
-                  onClick={clearFile}
-                  className="!text-red-500 cursor-pointer hover:!text-red-700 !font-bold !text-lg !ml-8"
+                  onClick={() => {
+                    clearFile();
+                    setValue("avatar" as any, "");
+                  }}
+                  className="text-red-500 cursor-pointer hover:text-red-700 font-bold text-lg -ml-8"
                 >
                   ×
                 </button>
@@ -123,7 +132,7 @@ export function AddUser() {
               <img
                 src={preview}
                 alt="Anteprima"
-                className="!h-24 !w-24 rounded-full !object-cover !border"
+                className="h-24 w-24 rounded-full object-cover border"
               />
             )}
             {errors.avatar && (
@@ -158,7 +167,7 @@ export function AddUser() {
             )}
           </div>
 
-          <DialogFooter className="!pt-7">
+          <DialogFooter className="pt-7">
             <DialogClose asChild>
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>
@@ -178,6 +187,7 @@ export function AddBook() {
     handleSubmit,
     reset,
     setError,
+    setValue,
     clearErrors,
     formState: { errors },
   } = useForm<CreateBookPayload>();
@@ -236,10 +246,10 @@ export function AddBook() {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="!p-6 !h-auto">
+      <DialogContent className="p-6 h-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
           <DialogHeader>
-            <DialogTitle className="!font-medium">Aggiungi Libro</DialogTitle>
+            <DialogTitle className="font-medium">Aggiungi Libro</DialogTitle>
             <DialogDescription>
               Apporta qui i dati del tuo libro. Clicca su Aggiungi quando hai
               finito.
@@ -248,30 +258,38 @@ export function AddBook() {
 
           <div className="grid gap-3">
             <Label htmlFor="photo">Foto libro</Label>
+            {/* Hidden field registered with RHF to surface validation errors */}
+            <input type="hidden" {...register("picture", { required: "La foto è obbligatoria" })} />
             <Input
               id="photo"
               type="file"
               accept="image/*"
               className="inputform hidden"
               ref={fileInputRef}
+              disabled={!!fileName}
               onChange={(e) => {
                 handleFileChange(e);
+                setValue("picture" as any, e.target.files && e.target.files.length > 0 ? "selected" : "");
                 clearErrors("picture");
               }}
             />
             <div className="flex items-center gap-2 inputform">
               <Button
                 type="button"
-                className="!w-70 !pl-11 cursor-pointer"
+                className="w-70 pl-11 cursor-pointer"
                 onClick={openFileDialog}
+                disabled={!!fileName}
               >
                 {fileName ?? "Seleziona una foto"}
               </Button>
               {fileName && (
                 <button
                   type="button"
-                  onClick={clearFile}
-                  className="!text-red-500 cursor-pointer hover:!text-red-700 !font-bold !text-lg !ml-8"
+                  onClick={() => {
+                    clearFile();
+                    setValue("picture" as any, "");
+                  }}
+                  className="text-red-500 cursor-pointer hover:text-red-700 font-bold text-lg ml-8"
                 >
                   ×
                 </button>
@@ -281,7 +299,7 @@ export function AddBook() {
               <img
                 src={preview}
                 alt="Anteprima copertina"
-                className="!h-24 !w-24 rounded-full !object-cover !border"
+                className="h-24 w-24 rounded-full object-cover border"
               />
             )}
             {errors.picture && (
@@ -358,7 +376,7 @@ export function AddBook() {
             )}
           </div>
 
-          <DialogFooter className="!pt-7">
+          <DialogFooter className="pt-7">
             <DialogClose asChild>
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>

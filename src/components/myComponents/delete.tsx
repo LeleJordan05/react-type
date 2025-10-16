@@ -17,9 +17,9 @@ export function DeleteUser() {
       <AlertDialogTrigger asChild>
         <Button className="deletebtn">Cancella</Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="!p-6 !h-auto !bg-primary">
+      <AlertDialogContent className="p-6 h-auto bg-primary">
         <AlertDialogHeader>
-          <AlertDialogTitle className="!font-medium">
+          <AlertDialogTitle className="font-medium">
             Sei assolutamente sicuro?
           </AlertDialogTitle>
           <AlertDialogDescription>
@@ -44,9 +44,9 @@ export function DeleteBook() {
       <AlertDialogTrigger asChild>
         <Button className="deletebtn">Cancella</Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="!p-6 !h-auto !bg-primary">
+      <AlertDialogContent className="p-6 h-auto bg-primary">
         <AlertDialogHeader>
-          <AlertDialogTitle className="!font-medium">
+          <AlertDialogTitle className="font-medium">
             Sei assolutamente sicuro?
           </AlertDialogTitle>
           <AlertDialogDescription>

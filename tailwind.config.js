@@ -3,7 +3,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#fffff",
+        primary: "#ffffff",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

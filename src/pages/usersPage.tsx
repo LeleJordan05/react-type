@@ -7,20 +7,20 @@ import { UserList } from "@/components/myComponents/userlist";
 export function UserPage() {
   return (
     <>
-      <div className="!flex !flex-row !justify-between">
+      <div className="flex flex-row justify-between mb-12">
         <div>
           <Menu />
         </div>
-        <div className="!w-120">
+        <div className="w-120">
           <SearchBarUsers />
         </div>
-        <div className="!flex !flex-row">
+        <div className="flex flex-row">
           <MyFilter />
           <AddUser />
         </div>
       </div>
 
-      <div className="!justify-center !flex">
+      <div className="justify-center flex">
         <UserList />
       </div>
     </>

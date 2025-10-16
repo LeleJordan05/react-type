@@ -13,19 +13,19 @@ export default function Menu() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <NavigationMenu className="!ml-30 !mt-5">
+    <NavigationMenu className="ml-30 mt-5">
       <NavigationMenuList className="menu-list">
         <NavigationMenuItem>
           <NavigationMenuTrigger
             onClick={() => navigate("/utenti")}
             className={`
-              cursor-pointer px-4 py-2 rounded-lg transition-all duration-300 ease-in-out
+              cursor-pointer py-1 transition-all duration-300 ease-in-out
               relative overflow-hidden group
-              hover:!text-blue-600 hover:scale-105 
+              hover:text-blue-600 hover:scale-105 
               ${
                 isActive("/utenti")
-                  ? "!text-blue-600"
-                  : "!text-gray-700 hover:!text-blue-600"
+                  ? "text-blue-600"
+                  : "text-gray-700 hover:text-blue-600"
               }
             `}
           >
@@ -42,13 +42,13 @@ export default function Menu() {
           <NavigationMenuTrigger
             onClick={() => navigate("/libri")}
             className={`
-              cursor-pointer px-4 py-2 rounded-lg transition-all duration-300 ease-in-out
+              cursor-pointer py-1 transition-all duration-300 ease-in-out
               relative overflow-hidden group
               hover:!text-blue-600 hover:scale-105 
               ${
                 isActive("/libri")
-                  ? "!text-blue-600"
-                  : "!text-gray-700 hover:!text-blue-600"
+                  ? "text-blue-600"
+                  : "text-gray-700 hover:text-blue-600"
               }
             `}
           >
