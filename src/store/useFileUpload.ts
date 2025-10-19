@@ -28,6 +28,11 @@ export function useFileUpload() {
     }
   };
 
+  const setFromUrl = (url: string, name?: string) => {
+    setPreview(url);
+    setFileName(name ?? "immagine esistente");
+  };
+
   return {
     preview,
     fileName,
@@ -35,5 +40,6 @@ export function useFileUpload() {
     handleFileChange,
     openFileDialog,
     clearFile,
+    setFromUrl,
   };
 }

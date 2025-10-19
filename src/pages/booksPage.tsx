@@ -6,18 +6,18 @@ import { BookList } from "@/components/myComponents/bookslist";
 export function BookPage() {
   return (
     <>
-      <div className="!flex !flex-row !justify-between">
+      <div className="flex flex-row justify-between mb-12">
         <div>
           <Menu />
         </div>
-        <div className="!mt-5 !w-130">
+        <div className="w-120">
           <SearchBarBooks />
         </div>
         <div>
           <AddBook />
         </div>
       </div>
-      <div className="!justify-center !flex">
+      <div className="justify-center flex">
         <BookList />
       </div>
     </>

@@ -48,7 +48,7 @@ export function UserCard({ user }: UserProps) {
               </DialogHeader>
             </DialogContent>
           </Dialog>
-          <EditUser user={user} /> <DeleteUser />
+          <EditUser user={user} /> <DeleteUser user={user} />
         </div>
       </div>
     </Card>
@@ -62,7 +62,7 @@ type BookProps = {
 export function BookCard({ book }: BookProps) {
   return (
     <Card className="card">
-      <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 sm:gap-6">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <img
             src={book.picture}
@@ -93,7 +93,7 @@ export function BookCard({ book }: BookProps) {
           </button>
 
           <EditBook book={book} />
-          <DeleteBook />
+          <DeleteBook book={book} />
         </div>
       </div>
     </Card>

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import {
   Dialog,
   DialogClose,
@@ -17,12 +18,15 @@ import { UpdateUserPayload, User } from "@/types/User";
 import { UpdateBookPayload, Book } from "@/types/Book";
 import { useUpdateUser } from "@/hooks/useUsers";
 import { useUpdateBook } from "@/hooks/useBooks";
+import { toast } from "sonner";
 
 export function EditUser({ user }: { user: User }) {
+  const [open, setOpen] = useState(false);
   const { mutate: updateUser, isPending } = useUpdateUser();
   const {
     register,
     handleSubmit,
+    reset,
     setError,
     setValue,
     clearErrors,
@@ -41,24 +45,38 @@ export function EditUser({ user }: { user: User }) {
     clearFile,
   } = useFileUpload();
 
+  const onSubmitUser = (data: UpdateUserPayload) => {
+    const image = preview ?? user.avatar;
+    if (!image) {
+      setError("avatar" as any, {
+        type: "required",
+        message: "La foto è obbligatoria",
+      });
+      return;
+    }
+    updateUser(
+      { id: user.id, data: { name: data.name, avatar: image } },
+      {
+        onSuccess: () => {
+          reset();
+          clearFile();
+          setOpen(false);
+          toast.success(`Utente "${data.name}" aggiornato con successo`);
+        },
+        onError: () => {
+          toast.error("Errore durante l'aggiornamento dell'utente");
+        },
+      }
+    );
+  };
+
   return (
-    <Dialog>
-      <form
-        onSubmit={handleSubmit((data) => {
-          if (!preview) {
-            setError("avatar" as any, {
-              type: "required",
-              message: "La foto è obbligatoria",
-            });
-            return;
-          }
-          updateUser({ id: user.id, data: { name: data.name, avatar: preview } });
-        })}
-      >
-        <DialogTrigger asChild className="editbtn">
-          <Button variant="outline"> Modifica</Button>
-        </DialogTrigger>
-        <DialogContent className="p-6 h-auto">
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild className="editbtn">
+        <Button type="button" variant="outline"> Modifica</Button>
+      </DialogTrigger>
+      <DialogContent className="p-6 h-auto">
+        <form onSubmit={handleSubmit(onSubmitUser)} className="grid gap-4">
           <DialogHeader>
             <DialogTitle className="font-medium">Modifica Utente</DialogTitle>
             <DialogDescription>
@@ -146,21 +164,23 @@ export function EditUser({ user }: { user: User }) {
             <DialogClose asChild>
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>
-            <Button type="submit" className="bluebtn" disabled={isPending}>
-              Salva
+            <Button type="submit" className="bluebtn" disabled={isPending} >
+              {isPending ? "Salvataggio..." : "Salva"}
             </Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }
 
 export function EditBook({ book }: { book: Book }) {
+  const [open, setOpen] = useState(false);
   const { mutate: updateBook, isPending } = useUpdateBook();
   const {
     register,
     handleSubmit,
+    reset,
     setError,
     setValue,
     clearErrors,
@@ -181,24 +201,46 @@ export function EditBook({ book }: { book: Book }) {
     clearFile,
   } = useFileUpload();
 
+  const onSubmitBook = (data: UpdateBookPayload) => {
+    const image = preview ?? book.picture;
+    if (!image) {
+      setError("picture" as any, {
+        type: "required",
+        message: "La foto è obbligatoria",
+      });
+      return;
+    }
+    updateBook(
+      {
+        id: book.id,
+        data: {
+          name: data.name,
+          description: data.description,
+          buyUrl: data.buyUrl,
+          picture: image,
+        },
+      },
+      {
+        onSuccess: () => {
+          reset();
+          clearFile();
+          setOpen(false);
+          toast.success(`Libro "${data.name}" aggiornato con successo`);
+        },
+        onError: () => {
+          toast.error("Errore durante l'aggiornamento del libro");
+        },
+      }
+    );
+  };
+
   return (
-    <Dialog>
-      <form
-        onSubmit={handleSubmit((data) => {
-          if (!preview) {
-            setError("picture" as any, {
-              type: "required",
-              message: "La foto è obbligatoria",
-            });
-            return;
-          }
-          updateBook({ id: book.id, data: { name: data.name, description: data.description, buyUrl: data.buyUrl, picture: preview } });
-        })}
-      >
-        <DialogTrigger asChild className="editbtn">
-          <Button variant="outline">Modifica</Button>
-        </DialogTrigger>
-        <DialogContent className="p-6 h-auto">
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild className="editbtn">
+        <Button type="button" variant="outline">Modifica</Button>
+      </DialogTrigger>
+      <DialogContent className="p-6 h-auto">
+        <form onSubmit={handleSubmit(onSubmitBook)} className="grid gap-4">
           <DialogHeader>
             <DialogTitle className="font-medium">Modifica libro</DialogTitle>
             <DialogDescription>
@@ -294,8 +336,8 @@ export function EditBook({ book }: { book: Book }) {
               Salva
             </Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }

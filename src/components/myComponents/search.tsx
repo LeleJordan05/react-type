@@ -26,14 +26,14 @@ export function SearchBarBooks() {
       <Search
         size={18}
         strokeWidth={1.8}
-        className="absolute mt-3 ml-3 text-slate-500 pointer-events-none"
+        className="absolute mt-8 ml-3 text-slate-500 pointer-events-none"
         aria-hidden
       />
 
       <Input
         type="text"
         placeholder="Cerca un libro..."
-        className="pl-10 h-10 rounded-lg bg-white border-none"
+        className="pl-10 h-10 mt-5 rounded-lg bg-white border-none"
       />
     </>
   );

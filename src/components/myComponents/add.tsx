@@ -18,6 +18,7 @@ import { useCreateBook } from "@/hooks/useBooks";
 import { CreateUserPayload } from "@/types/User";
 import { CreateBookPayload } from "@/types/Book";
 import { useAddStore } from "@/store/useAddDialog";
+import { toast } from "sonner";
 
 export function AddUser() {
   const {
@@ -58,6 +59,10 @@ export function AddUser() {
         onSuccess: () => {
           reset();
           clearFile();
+          toast.success(`Utente "${data.name}" creato con successo`);
+        },
+        onError: () => {
+          toast.error("Errore durante la creazione dell'utente");
         },
       }
     );
@@ -171,7 +176,7 @@ export function AddUser() {
             <DialogClose asChild>
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>
-            <Button type="submit" className="bluebtn" disabled={isPending}>
+            <Button className="bluebtn" disabled={isPending}>
               {isPending ? "Creazione..." : "Crea"}
             </Button>
           </DialogFooter>
@@ -224,6 +229,10 @@ export function AddBook() {
         onSuccess: () => {
           reset();
           clearFile();
+          toast.success(`Libro "${data.name}" aggiunto con successo`);
+        },
+        onError: () => {
+          toast.error("Errore durante l'aggiunta del libro");
         },
       }
     );

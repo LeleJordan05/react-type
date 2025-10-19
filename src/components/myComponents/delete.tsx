@@ -10,8 +10,26 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useDeleteUser } from "@/hooks/useUsers";
+import { useDeleteBook } from "@/hooks/useBooks";
+import { User } from "@/types/User";
+import { Book } from "@/types/Book";
 
-export function DeleteUser() {
+export function DeleteUser({ user }: { user: User }) {
+  const { mutate: deleteUser, isPending } = useDeleteUser();
+
+  const handleDelete = () => {
+    deleteUser(user.id, {
+      onSuccess: () => {
+        toast.success(`Utente "${user.name}" eliminato con successo`);
+      },
+      onError: () => {
+        toast.error("Errore durante l'eliminazione dell'utente");
+      },
+    });
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -24,13 +42,17 @@ export function DeleteUser() {
           </AlertDialogTitle>
           <AlertDialogDescription>
             Questa azione non può essere annullata. Cancellerà in modo
-            permanente il tuo account e rimuoverà i tuoi dati dai nostri server.
+            permanente l'utente "{user.name}" e rimuoverà i suoi dati dai nostri server.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="whitebtn">Cancella</AlertDialogCancel>
-          <AlertDialogAction className="deletebtndialog">
-            Continua
+          <AlertDialogAction 
+            className="deletebtndialog" 
+            onClick={handleDelete}
+            disabled={isPending}
+          >
+            {isPending ? "Eliminazione..." : "Continua"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -38,7 +60,20 @@ export function DeleteUser() {
   );
 }
 
-export function DeleteBook() {
+export function DeleteBook({ book }: { book: Book }) {
+  const { mutate: deleteBook, isPending } = useDeleteBook();
+
+  const handleDelete = () => {
+    deleteBook(book.id, {
+      onSuccess: () => {
+        toast.success(`Libro "${book.name}" eliminato con successo`);
+      },
+      onError: () => {
+        toast.error("Errore durante l'eliminazione del libro");
+      },
+    });
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -51,13 +86,17 @@ export function DeleteBook() {
           </AlertDialogTitle>
           <AlertDialogDescription>
             Questa azione non può essere annullata. Cancellerà in modo
-            permanente il libro e rimuoverà i dati dai nostri server.
+            permanente il libro "{book.name}" e rimuoverà i dati dai nostri server.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className="whitebtn">Cancella</AlertDialogCancel>
-          <AlertDialogAction className="deletebtndialog">
-            Continua
+          <AlertDialogAction 
+            className="deletebtndialog" 
+            onClick={handleDelete}
+            disabled={isPending}
+          >
+            {isPending ? "Eliminazione..." : "Continua"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
