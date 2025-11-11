@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,13 +5,17 @@ import {
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function MyFilter() {
-  const [position, setPosition] = React.useState("bottom");
+type FilterOption = "all" | "withBooks" | "withoutBooks";
 
+type MyFilterProps = {
+  filterValue: FilterOption;
+  onFilterChange: (value: FilterOption) => void;
+};
+
+export function MyFilter({ filterValue, onFilterChange }: MyFilterProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -28,14 +30,13 @@ export function MyFilter() {
           <Filter />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40">
-        <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-          <DropdownMenuRadioItem value="top">All</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bottom">
+      <DropdownMenuContent className="w-40 rounded-xl border-2 border-foreground/20 shadow-lg">
+        <DropdownMenuRadioGroup value={filterValue} onValueChange={(value) => onFilterChange(value as FilterOption)}>
+          <DropdownMenuRadioItem value="all">All</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="withBooks">
             Users with books
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="right">
+          <DropdownMenuRadioItem value="withoutBooks">
             Users without books
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>

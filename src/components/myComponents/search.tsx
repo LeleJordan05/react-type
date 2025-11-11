@@ -1,7 +1,13 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 
-export function SearchBarUsers() {
+type SearchBarProps = {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+};
+
+export function SearchBarUsers({ value, onChange, placeholder }: SearchBarProps) {
   return (
     <>
       <Search
@@ -13,14 +19,16 @@ export function SearchBarUsers() {
 
       <Input
         type="text"
-        placeholder="Cerca un utente..."
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder ?? "Cerca un utente..."}
         className="pl-10 h-10 mt-5 rounded-lg bg-white border-none"
       />
     </>
   );
 }
 
-export function SearchBarBooks() {
+export function SearchBarBooks({ value, onChange, placeholder }: SearchBarProps) {
   return (
     <>
       <Search
@@ -32,7 +40,9 @@ export function SearchBarBooks() {
 
       <Input
         type="text"
-        placeholder="Cerca un libro..."
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder ?? "Cerca un libro..."}
         className="pl-10 h-10 mt-5 rounded-lg bg-white border-none"
       />
     </>
@@ -40,4 +50,3 @@ export function SearchBarBooks() {
 }
 
 export default SearchBarUsers;
-SearchBarBooks;

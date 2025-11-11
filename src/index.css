@@ -170,7 +170,7 @@
   }
 
   .viewbooks {
-    @apply bg-primary hover:text-blue-600 hover:scale-105 cursor-pointer 
+    @apply bg-primary hover:text-blue-600 hover:scale-105 cursor-pointer flex items-center justify-center
            text-gray-700 border-blue-500 border-2 font-medium 
            w-25
            rounded-lg 
@@ -206,15 +206,15 @@
   }
 
   .dialogcard {
-    @apply w-full 
-           h-auto 
+    @apply w-full
+           h-auto
          rounded-lg bg-white shadow-sm;
   }
 
   .btndialogbook {
     @apply bg-primary hover:text-blue-600 hover:scale-105 cursor-pointer 
            text-gray-700 border-blue-500 border-2 font-medium text-xs
-           w-30
+           w-30 flex items-center justify-center
            rounded-lg 
            h-6;
   }

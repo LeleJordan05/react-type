@@ -1,9 +1,14 @@
 import { useBooks } from "@/hooks/useBooks";
 import { BookCard } from "@/components/myComponents/cardlist";
+import { Book } from "@/types/Book";
 import "@/index.css";
 import { BookCardSkeleton } from "./bookcardskeleton";
 
-export function BookList() {
+type BookListProps = {
+  searchQuery?: string;
+}
+
+export function BookList({ searchQuery = "" }: BookListProps) {
   const { data: books, isLoading } = useBooks();
 
   if (isLoading) {
@@ -19,9 +24,25 @@ export function BookList() {
     );
   }
 
+  const normalizedQuery = searchQuery.trim();
+
+  const escapeRegex = (value: string) =>
+    value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  const boundaryRegex = normalizedQuery
+    ? new RegExp(`\\b${escapeRegex(normalizedQuery)}`, "i")
+    : null;
+
+  const filteredBooks = boundaryRegex
+    ? books?.filter((book: Book) =>
+        [book.name, book.description, book.id]
+          .some((field) => boundaryRegex.test(String(field)))
+      )
+    : books;
+
   return (
     <div className="grid gap-4">
-      {books?.map((book: any) => (
+      {filteredBooks?.map((book: Book) => (
         <BookCard key={book.id} book={book} />
       ))}
     </div>

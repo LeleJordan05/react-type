@@ -133,7 +133,7 @@ export function EditUser({ user }: { user: User }) {
                 <img
                   src={preview}
                   alt="Anteprima foto profilo"
-                  className="h-24 w-24 rounded-full object-cover border"
+                  className="h-24 w-24 rounded-lg "
                 />
               )}
               {errors.avatar && (
@@ -271,7 +271,7 @@ export function EditBook({ book }: { book: Book }) {
               <div className="flex items-center gap-2 inputform">
                 <Button
                   type="button"
-                  className="w-70 pl-11 cursor-pointer"
+                  className="w-full  text-black cursor-pointer"
                   onClick={openFileDialog}
                   disabled={!!fileName}
                 >

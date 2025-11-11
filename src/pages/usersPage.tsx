@@ -1,10 +1,16 @@
+import { useState } from "react";
 import Menu from "@/components/myComponents/primaryMenu";
 import { SearchBarUsers } from "@/components/myComponents/search";
 import { MyFilter } from "@/components/myComponents/filter";
 import { AddUser } from "@/components/myComponents/add";
 import { UserList } from "@/components/myComponents/userlist";
 
+type FilterOption = "all" | "withBooks" | "withoutBooks";
+
 export function UserPage() {
+  const [filterValue, setFilterValue] = useState<FilterOption>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
   return (
     <>
       <div className="flex flex-row justify-between mb-12">
@@ -12,16 +18,19 @@ export function UserPage() {
           <Menu />
         </div>
         <div className="w-120">
-          <SearchBarUsers />
+          <SearchBarUsers value={searchQuery} onChange={setSearchQuery} />
         </div>
         <div className="flex flex-row">
-          <MyFilter />
+          <MyFilter 
+            filterValue={filterValue} 
+            onFilterChange={setFilterValue} 
+          />
           <AddUser />
         </div>
       </div>
 
       <div className="justify-center flex">
-        <UserList />
+        <UserList filterValue={filterValue} searchQuery={searchQuery} />
       </div>
     </>
   );

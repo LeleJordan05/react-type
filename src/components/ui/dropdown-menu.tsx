@@ -126,12 +126,17 @@ function DropdownMenuRadioItem({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        "focus:bg-accent !ml-5 font-normal focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "font-normal relative flex cursor-default items-center gap-2 rounded-lg py-1.5 pr-2 pl-6 text-sm outline-hidden select-none transition-colors",
+        "hover:bg-accent/70 focus:bg-accent/70 focus:text-accent-foreground",
+        "data-[state=checked]:bg-primary/85 data-[state=checked]:text-foreground supports-[backdrop-filter]:data-[state=checked]:backdrop-blur-sm",
+        "data-[state=checked]:shadow-sm data-[state=checked]:font-medium",
+        "before:content-[''] before:absolute before:left-0 before:top-1 before:bottom-1 before:w-1 before:rounded-full before:bg-transparent data-[state=checked]:before:bg-blue-600/80",
+        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute -left-4 flex size-3.5 items-center justify-center">
+      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center transition-all opacity-0 scale-0 data-[state=checked]:opacity-100 data-[state=checked]:scale-100">
         <DropdownMenuPrimitive.ItemIndicator>
           <CircleIcon className="size-2 fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
