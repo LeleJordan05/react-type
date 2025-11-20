@@ -8,11 +8,11 @@ export function BookPage() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   return (
     <>
-      <div className="flex flex-row justify-between mb-12">
+      <div className="flex flex-col mb-5 lg:flex-row md:flex md:flex-row justify-between items-center lg:mb-12">
         <div>
           <Menu />
         </div>
-        <div className="lg:w-120 md:w-80">
+        <div className="lg:w-120 md:w-80 w-70">
           <SearchBarBooks value={searchQuery} onChange={setSearchQuery} />
         </div>
         <div>

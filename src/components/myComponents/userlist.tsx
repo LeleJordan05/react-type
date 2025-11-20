@@ -53,7 +53,7 @@ export function UserList({ filterValue, searchQuery = "" }: UserListProps) {
     return true;
   }) || [];
 
-  // Apply text search
+  
   const searchedUsers = boundaryRegex
     ? filteredUsers.filter((user: User) =>
         [user.name, user.id]

@@ -13,7 +13,7 @@ export default function Menu() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <NavigationMenu className="lg:ml-30 md:ml-10 ml-5 mt-5">
+    <NavigationMenu className="lg:ml-30 md:ml-10  lg:mt-5 md:mt-5 mt-3">
       <NavigationMenuList className="menu-list">
         <NavigationMenuItem>
           <NavigationMenuTrigger

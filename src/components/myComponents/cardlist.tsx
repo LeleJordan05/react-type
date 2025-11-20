@@ -20,8 +20,8 @@ type UserProps = {
 
 export function UserCard({ user }: UserProps) {
   return (
-    <Card className="card flex flex-row items-center justify-between">
-        <div className="flex items-center lg:gap-4 md:gap-2">
+    <Card className="card flex flex-wrap lg:flex-row md:flex md:flex-row p-2 justify-between">
+        <div className="flex items-center lg:gap-4  gap-2">
           <img
             src={
               user.avatar ||
@@ -60,17 +60,17 @@ type BookProps = {
 
 export function BookCard({ book }: BookProps) {
   return (
-    <Card className="card flex flex-row items-center justify-between">
-        <div className="flex items-center lg:gap-4 md:gap-2">
+    <Card className="card flex lg:flex-row md:flex-row p-2 justify-between ">
+        <div className="flex items-center lg:gap-4 gap-2 ">
           <img
             src={book.picture}
             alt={`Immagine ${book.name}`}
-            className="lg:h-24 lg:w-24 md:h-24 md:w-24 rounded-lg"
+            className="h-24 w-24 rounded-lg"
           /> 
           <p className="text-black/80 font-medium">{book.name}</p>
         </div>
 
-        <div className="flex items-center gap-3 flex-row">
+        <div className="flex flex-wrap items-center justify-center mx-5 gap-3 lg:flex-row md:flex-row">
           <Dialog>
             <DialogTrigger asChild className="viewbooks">
               <Button variant="outline">Descrizione</Button>

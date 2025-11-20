@@ -120,16 +120,15 @@
   .menu-list {
     @apply bg-primary font-medium
            flex flex-row 
-           lg:w-50 lg:gap-10 lg:text-base lg:h-10
-           md:w-40 md:gap-6 md:text-base md:h-10
-           
+           lg:w-50 lg:gap-10 
+           w-40 gap-6 h-10
            items-center rounded-lg justify-center 
            
   }
 
   .filter {
     @apply hover:text-blue-600 hover:scale-105 cursor-pointer 
-    mt-5
+    lg:mt-5 md:mt-5 mt-2
     h-10
     w-10
     rounded-lg bg-primary border-none
@@ -140,9 +139,9 @@
            text-gray-700 font-medium 
            lg:w-35 border-none
            flex flex-row items-center rounded-lg justify-center 
-           mt-5 ml-4
-           md:mr-10 md:h-10
-           lg:mr-30 lg:h-10
+           ml-4 h-10 mt-2
+           md:mr-10 md:h-10 md:mt-5
+           lg:mr-30 lg:h-10 lg:mt-5
   }
 
   .bluebtn {
@@ -166,7 +165,7 @@
   }
 
   .card {
-    @apply lg:w-270 md:w-160
+    @apply lg:w-270 md:w-160 w-80
            h-auto
            rounded-lg bg-white shadow-sm border-none;
   }
@@ -176,7 +175,7 @@
            text-gray-700 border-blue-500 border-2 font-medium 
            rounded-lg 
            h-10
-           md:w-22
+           w-22
            lg:w-25
           
   }
@@ -186,7 +185,7 @@
            text-black/80 border-red-500 border-2 font-medium 
            rounded-lg 
            h-10
-           md:mr-4 md:w-22
+           md:mr-4 w-22
            lg:mr-8 lg:w-25
   }
 
@@ -195,17 +194,18 @@
            text-gray-700 border-blue-500 border-2 font-medium 
            rounded-lg 
            h-10
-           md:w-22
+           w-22
            lg:w-25
   }
 
   .addbook {
     @apply bg-primary hover:text-blue-600 hover:scale-105 cursor-pointer 
            text-gray-700 font-medium 
-          border-none
+           border-none
            flex flex-row items-center rounded-lg justify-center 
            h-10
-           mt-5 ml-7
+           mt-2
+           lg:mt-5 lg:ml-7
            md:mr-10
            lg:mr-25 lg:w-45
   }
