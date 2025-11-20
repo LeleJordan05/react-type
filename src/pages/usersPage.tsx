@@ -17,7 +17,7 @@ export function UserPage() {
         <div>
           <Menu />
         </div>
-        <div className="w-120">
+        <div className="lg:w-120 md:w-80">
           <SearchBarUsers value={searchQuery} onChange={setSearchQuery} />
         </div>
         <div className="flex flex-row">

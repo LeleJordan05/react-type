@@ -118,11 +118,13 @@
 
 @layer utilities {
   .menu-list {
-    @apply bg-primary font-medium 
-           w-50 
-           flex flex-row gap-10
+    @apply bg-primary font-medium
+           flex flex-row 
+           lg:w-50 lg:gap-10 lg:text-base lg:h-10
+           md:w-40 md:gap-6 md:text-base md:h-10
+           
            items-center rounded-lg justify-center 
-           h-10;
+           
   }
 
   .filter {
@@ -136,11 +138,11 @@
   .adduser {
     @apply bg-primary hover:text-blue-600 hover:scale-105 cursor-pointer 
            text-gray-700 font-medium 
-           w-35 border-none
+           lg:w-35 border-none
            flex flex-row items-center rounded-lg justify-center 
-           h-10
            mt-5 ml-4
-           mr-30;
+           md:mr-10 md:h-10
+           lg:mr-30 lg:h-10
   }
 
   .bluebtn {
@@ -164,7 +166,7 @@
   }
 
   .card {
-    @apply w-270
+    @apply lg:w-270 md:w-160
            h-auto
            rounded-lg bg-white shadow-sm border-none;
   }
@@ -172,43 +174,46 @@
   .viewbooks {
     @apply bg-primary hover:text-blue-600 hover:scale-105 cursor-pointer flex items-center justify-center
            text-gray-700 border-blue-500 border-2 font-medium 
-           w-25
            rounded-lg 
-           h-10;
+           h-10
+           md:w-22
+           lg:w-25
           
   }
 
   .deletebtn {
     @apply bg-red-500 hover:scale-105 hover:bg-red-600 cursor-pointer 
            text-black/80 border-red-500 border-2 font-medium 
-           w-25
            rounded-lg 
            h-10
-           mr-8;
+           md:mr-4 md:w-22
+           lg:mr-8 lg:w-25
   }
 
   .editbtn {
     @apply bg-background hover:scale-105 hover:bg-background/90 cursor-pointer 
            text-gray-700 border-blue-500 border-2 font-medium 
-           w-25
            rounded-lg 
-           h-10;
+           h-10
+           md:w-22
+           lg:w-25
   }
 
   .addbook {
     @apply bg-primary hover:text-blue-600 hover:scale-105 cursor-pointer 
            text-gray-700 font-medium 
-           w-45 border-none
+          border-none
            flex flex-row items-center rounded-lg justify-center 
            h-10
            mt-5 ml-7
-           mr-25;
+           md:mr-10
+           lg:mr-25 lg:w-45
   }
 
   .dialogcard {
     @apply w-full
            h-auto
-         rounded-lg bg-white shadow-sm;
+           rounded-lg bg-white shadow-sm;
   }
 
   .btndialogbook {

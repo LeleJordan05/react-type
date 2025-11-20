@@ -12,7 +12,7 @@ export function BookPage() {
         <div>
           <Menu />
         </div>
-        <div className="w-120">
+        <div className="lg:w-120 md:w-80">
           <SearchBarBooks value={searchQuery} onChange={setSearchQuery} />
         </div>
         <div>

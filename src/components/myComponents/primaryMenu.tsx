@@ -13,7 +13,7 @@ export default function Menu() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <NavigationMenu className="ml-30 mt-5">
+    <NavigationMenu className="lg:ml-30 md:ml-10 ml-5 mt-5">
       <NavigationMenuList className="menu-list">
         <NavigationMenuItem>
           <NavigationMenuTrigger
@@ -44,7 +44,7 @@ export default function Menu() {
             className={`
               cursor-pointer py-1 transition-all duration-300 ease-in-out
               relative overflow-hidden group
-              hover:!text-blue-600 hover:scale-105 
+              hover:text-blue-600 hover:scale-105 
               ${
                 isActive("/libri")
                   ? "text-blue-600"
