@@ -4,7 +4,7 @@ import "@/index.css";
 
 export function UserCardSkeleton() {
   return (
-    <Card className="card flex flex-wrap lg:flex-row md:flex md:flex-row p-2 justify-between">
+    <Card className="card flex flex-wrap md:flex-row p-2 justify-between">
       <div className="flex items-center lg:gap-4 gap-2 pl-2">
         {/* Immagine + Nome utente */}
         <Skeleton className="h-24 w-24 rounded-lg" />
@@ -14,7 +14,7 @@ export function UserCardSkeleton() {
         </div>
       </div>
       {/* Bottoni / Azioni */}
-      <div className="flex items-center justify-center gap-3 sm:gap-5">
+      <div className="flex items-center justify-center gap-3 md:gap-5 lg:mr-7 md:mr-4">
         <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" />
         <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" />
         <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" />

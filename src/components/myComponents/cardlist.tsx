@@ -20,7 +20,7 @@ type UserProps = {
 
 export function UserCard({ user }: UserProps) {
   return (
-    <Card className="card flex flex-wrap lg:flex-row md:flex md:flex-row p-2 justify-between">
+    <Card className="card flex flex-wrap md:flex-row p-2 justify-between">
         <div className="flex items-center lg:gap-4 gap-2 pl-2">
           <img
             src={
@@ -65,14 +65,14 @@ type BookProps = {
 
 export function BookCard({ book }: BookProps) {
   return (
-    <Card className="card flex lg:flex-row md:flex-row p-2 justify-between ">
+    <Card className="card flex md:flex-row p-2 justify-between ">
         <div className="flex items-center lg:gap-4 gap-2 ">
           <img
             src={book.picture}
             alt={`Immagine ${book.name}`}
             className="h-24 w-24 rounded-lg"
           /> 
-          <div className="flex flex-col">
+          <div className="flex flex-col md:w-30">
             <p className="text-black/80 font-medium">{book.name}</p>
             <p className="text-xs text-gray-500">
               Creato il {new Date(book.createdAt).toLocaleDateString("it-IT")}
@@ -80,7 +80,7 @@ export function BookCard({ book }: BookProps) {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center mx-5 gap-3 md:flex-row">
+        <div className="flex md:flex-row flex-wrap items-center justify-center mx-5 gap-3 ">
           <Dialog>
             <DialogTrigger asChild className="viewbooks">
               <Button variant="outline">Descrizione</Button>
@@ -88,7 +88,7 @@ export function BookCard({ book }: BookProps) {
             <DialogContent className="p-6 h-auto w-80 ">
               <DialogHeader>
                 <DialogTitle className="font-medium" >Descrizione</DialogTitle>
-                <DialogDescription className="max-h-60 overflow-y-auto text-left">{book.description}</DialogDescription>
+                <DialogDescription className="max-h-60 md:max-h-none overflow-y-auto text-left">{book.description}</DialogDescription>
               </DialogHeader>
             </DialogContent>
           </Dialog>
@@ -162,7 +162,7 @@ export function UserBookCard({ user }: UserBookCardProps) {
                 <DialogContent className="p-6 h-auto w-80">
                   <DialogHeader>
                     <DialogTitle className="font-medium">Descrizione</DialogTitle>
-                    <DialogDescription className="text-left max-h-60 overflow-y-auto">{book.description}</DialogDescription>
+                    <DialogDescription className="text-left max-h-60 md:max-h-none overflow-y-auto">{book.description}</DialogDescription>
                   </DialogHeader>
                 </DialogContent>
               </Dialog>

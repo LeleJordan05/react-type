@@ -43,7 +43,7 @@ export function SearchBarBooks({ value, onChange, placeholder }: SearchBarProps)
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder ?? "Cerca un libro..."}
-        className="pl-10 h-10 lg:mt-5 mt-2 rounded-lg bg-white border-none"
+        className="pl-10 h-10 md:mt-5 mt-2 rounded-lg bg-white border-none"
       />
     </>
   );
