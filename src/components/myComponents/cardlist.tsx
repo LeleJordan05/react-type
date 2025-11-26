@@ -159,7 +159,7 @@ export function UserBookCard({ user }: UserBookCardProps) {
                 <DialogTrigger asChild className="btndialogbook">
                   <Button variant="outline">Descrizione</Button>
                 </DialogTrigger>
-                <DialogContent className="p-6 h-auto">
+                <DialogContent className="p-6 h-auto w-80">
                   <DialogHeader>
                     <DialogTitle className="font-medium">Descrizione</DialogTitle>
                     <DialogDescription className="text-left max-h-60 overflow-y-auto">{book.description}</DialogDescription>
