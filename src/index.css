@@ -211,9 +211,10 @@
   }
 
   .dialogcard {
-    @apply w-full
-           h-auto
-           rounded-lg bg-white shadow-sm;
+    @apply md:w-full
+           w-68
+           h-auto mb-3
+           rounded-lg bg-white shadow-sm border-2 border-blue-100
   }
 
   .btndialogbook {

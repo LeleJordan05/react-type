@@ -21,7 +21,7 @@ type UserProps = {
 export function UserCard({ user }: UserProps) {
   return (
     <Card className="card flex flex-wrap lg:flex-row md:flex md:flex-row p-2 justify-between">
-        <div className="flex items-center lg:gap-4  gap-2">
+        <div className="flex items-center lg:gap-4 gap-2 pl-2">
           <img
             src={
               user.avatar ||
@@ -30,19 +30,24 @@ export function UserCard({ user }: UserProps) {
             alt={user.name}
             className="h-24 w-24 rounded-lg"
           />
-          <p className="text-black/80 font-medium">{user.name}</p>
+          <div className="flex flex-col">
+            <p className="text-black/80 font-medium">{user.name}</p>
+            <p className="text-xs text-gray-500">
+              Creato il {new Date(user.createdAt).toLocaleDateString("it-IT")}
+            </p>
+          </div>
         </div>
-        <div className="flex items-center gap-3 sm:gap-5">
+        <div className="flex items-center justify-center gap-3 sm:gap-5">
           <Dialog>
             <DialogTrigger asChild className="viewbooks bg-primary">
               <Button >Libri</Button>
             </DialogTrigger>
-            <DialogContent className="p-6 h-auto">
+            <DialogContent className="p-6 md:w-100 w-80 h-auto">
               <DialogHeader>
-                <DialogTitle className="font-medium">
+                <DialogTitle className="font-medium pb-3">
                   Libri in vendita di {user.name}
                 </DialogTitle>
-                <DialogDescription>
+                <DialogDescription className="max-h-60 overflow-y-auto">
                   <UserBookCard user={user}></UserBookCard>
                 </DialogDescription>
               </DialogHeader>
@@ -67,18 +72,23 @@ export function BookCard({ book }: BookProps) {
             alt={`Immagine ${book.name}`}
             className="h-24 w-24 rounded-lg"
           /> 
-          <p className="text-black/80 font-medium">{book.name}</p>
+          <div className="flex flex-col">
+            <p className="text-black/80 font-medium">{book.name}</p>
+            <p className="text-xs text-gray-500">
+              Creato il {new Date(book.createdAt).toLocaleDateString("it-IT")}
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center mx-5 gap-3 lg:flex-row md:flex-row">
+        <div className="flex flex-wrap items-center justify-center mx-5 gap-3 md:flex-row">
           <Dialog>
             <DialogTrigger asChild className="viewbooks">
               <Button variant="outline">Descrizione</Button>
             </DialogTrigger>
-            <DialogContent className="p-6 h-auto">
+            <DialogContent className="p-6 h-auto w-80 ">
               <DialogHeader>
-                <DialogTitle className="font-medium">Descrizione</DialogTitle>
-                <DialogDescription>{book.description}</DialogDescription>
+                <DialogTitle className="font-medium" >Descrizione</DialogTitle>
+                <DialogDescription className="max-h-60 overflow-y-auto text-left">{book.description}</DialogDescription>
               </DialogHeader>
             </DialogContent>
           </Dialog>
@@ -120,7 +130,7 @@ export function UserBookCard({ user }: UserBookCardProps) {
     );
   }
 
-  // Filter books that belong to this user
+  
   const userBooks = books?.filter((book: Book) => book.sellerId === user.id) || [];
 
   if (userBooks.length === 0) {
@@ -135,8 +145,8 @@ export function UserBookCard({ user }: UserBookCardProps) {
     <div className="h-auto">
       {userBooks.map((book: Book) => (
         <Card key={book.id} className="dialogcard">
-          <div className="flex flex-col items-center justify-between gap-4 p-6">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center justify-between gap-4 md:p-6 p-4">
+            <div className="flex items-center gap-4 pb-4">
               <img
                 src={book.picture}
                 alt={`Immagine ${book.name}`}
@@ -144,7 +154,7 @@ export function UserBookCard({ user }: UserBookCardProps) {
               />
               <p className="text-black/80 font-medium">{book.name}</p>
             </div>
-            <div className="flex items-center gap-3 sm:gap-5 flex-wrap">
+            <div className="flex flex-row items-center justify-center gap-3 sm:gap-5">
               <Dialog>
                 <DialogTrigger asChild className="btndialogbook">
                   <Button variant="outline">Descrizione</Button>
@@ -152,13 +162,13 @@ export function UserBookCard({ user }: UserBookCardProps) {
                 <DialogContent className="p-6 h-auto">
                   <DialogHeader>
                     <DialogTitle className="font-medium">Descrizione</DialogTitle>
-                    <DialogDescription>{book.description}</DialogDescription>
+                    <DialogDescription className="text-left max-h-60 overflow-y-auto">{book.description}</DialogDescription>
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
               <button
                 onClick={() => window.open(book.buyUrl, "_blank")}
-                className="btndialogbook mr-5"
+                className="btndialogbook md:mr-5"
               >
                 Acquista
               </button>

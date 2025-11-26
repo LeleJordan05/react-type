@@ -4,36 +4,20 @@ import "@/index.css";
 
 export function UserCardSkeleton() {
   return (
-    <Card >
-      <div className="flex flex-row items-center justify-between">
-        {/* Immagine + Nome libro */}
-        <div className="flex items-center gap-4">
-          <Skeleton className="h-24 w-24 rounded-lg" /> {/* copertina */}
-          <Skeleton className="h-6 w-32" /> {/* titolo */}
+    <Card className="card flex flex-wrap lg:flex-row md:flex md:flex-row p-2 justify-between">
+      <div className="flex items-center lg:gap-4 gap-2 pl-2">
+        {/* Immagine + Nome utente */}
+        <Skeleton className="h-24 w-24 rounded-lg" />
+        <div className="flex flex-col gap-1">
+          <Skeleton className="h-5 w-32" /> {/* nome */}
+          <Skeleton className="h-3 w-28" /> {/* data */}
         </div>
-
-        {/* Bottoni / Azioni */}
-        <div className="flex items-center gap-5 ">
-          <Skeleton
-            className="w-25
-           rounded-lg 
-           h-10 "
-          />{" "}
-          {/* libri */}
-          <Skeleton
-            className="w-25
-           rounded-lg 
-           h-10 "
-          />{" "}
-          {/* edit */}
-          <Skeleton
-            className="w-25
-           rounded-lg 
-           h-10 
-           mr-10 "
-          />{" "}
-          {/* delete */}
-        </div>
+      </div>
+      {/* Bottoni / Azioni */}
+      <div className="flex items-center justify-center gap-3 sm:gap-5">
+        <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" />
+        <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" />
+        <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" />
       </div>
     </Card>
   );

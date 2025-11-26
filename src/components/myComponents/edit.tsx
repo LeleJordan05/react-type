@@ -34,6 +34,7 @@ export function EditUser({ user }: { user: User }) {
   } = useForm<UpdateUserPayload>({
     defaultValues: {
       name: user.name,
+      ...( { createdAt: new Date(user.createdAt).toLocaleDateString("it-IT") } as any ),
     },
   });
   const {
@@ -75,7 +76,7 @@ export function EditUser({ user }: { user: User }) {
       <DialogTrigger asChild className="editbtn">
         <Button type="button" variant="outline"> Modifica</Button>
       </DialogTrigger>
-      <DialogContent className="p-6 h-auto">
+      <DialogContent className="p-6 h-auto md:w-100 w-80">
         <form onSubmit={handleSubmit(onSubmitUser)} className="grid gap-4">
           <DialogHeader>
             <DialogTitle className="font-medium">Modifica Utente</DialogTitle>
@@ -87,7 +88,6 @@ export function EditUser({ user }: { user: User }) {
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="photo">Foto profilo</Label>
-              {/* Hidden field registered with RHF to surface validation errors */}
               <input type="hidden" {...register("avatar", { required: "La foto è obbligatoria" })} />
 
               <Input
@@ -133,7 +133,7 @@ export function EditUser({ user }: { user: User }) {
                 <img
                   src={preview}
                   alt="Anteprima foto profilo"
-                  className="h-24 w-24 rounded-lg "
+                  className="md:h-24 md:w-24 h-20 w-20 rounded-lg "
                 />
               )}
               {errors.avatar && (
@@ -150,17 +150,16 @@ export function EditUser({ user }: { user: User }) {
               />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="username-1">Creato il:</Label>
+              <Label htmlFor="created-at-user">Creato il:</Label>
               <Input
-                id="username-1"
+                id="created-at-user"
                 className="inputform"
-                name="username"
                 disabled
-                defaultValue="11/08/2025"
+                {...register("createdAt" as any)}
               />
             </div>
           </div>
-          <DialogFooter className="pt-7">
+          <DialogFooter className="md:pt-7 pt-3">
             <DialogClose asChild>
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>
@@ -190,6 +189,7 @@ export function EditBook({ book }: { book: Book }) {
       name: book.name,
       description: book.description,
       buyUrl: book.buyUrl,
+      ...( { createdAt: new Date(book.createdAt).toLocaleDateString("it-IT") } as any ),
     },
   });
   const {
@@ -239,8 +239,8 @@ export function EditBook({ book }: { book: Book }) {
       <DialogTrigger asChild className="editbtn">
         <Button type="button" variant="outline">Modifica</Button>
       </DialogTrigger>
-      <DialogContent className="p-6 h-auto">
-        <form onSubmit={handleSubmit(onSubmitBook)} className="grid gap-4">
+      <DialogContent className="md:p-6 p-4 h-130 overflow-y-auto md:h-auto md:w-100 w-80">
+        <form onSubmit={handleSubmit(onSubmitBook)} className="grid md:gap-4 gap-2">
           <DialogHeader>
             <DialogTitle className="font-medium">Modifica libro</DialogTitle>
             <DialogDescription>
@@ -249,7 +249,7 @@ export function EditBook({ book }: { book: Book }) {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
-            <div className="grid gap-3">
+            <div className="grid md:gap-3 gap-1">
               <Label htmlFor="photo">Foto libro</Label>
               {/* Hidden field registered with RHF to surface validation errors */}
               <input type="hidden" {...register("picture", { required: "La foto è obbligatoria" })} />
@@ -285,7 +285,7 @@ export function EditBook({ book }: { book: Book }) {
                       clearFile();
                       setValue("picture" as any, "");
                     }}
-                    className="text-red-500 cursor-pointer hover:text-red-700 font-bold text-lg ml-8"
+                    className="text-red-500 cursor-pointer hover:text-red-700 font-bold text-lg -ml-8"
                     aria-label="Rimuovi foto"
                   >
                     ×
@@ -297,7 +297,7 @@ export function EditBook({ book }: { book: Book }) {
                 <img
                   src={preview}
                   alt="Anteprima foto profilo"
-                  className="h-24 w-24 rounded-full object-cover border"
+                  className="md:h-24 md:w-24  h-20 w-20 rounded-lg object-cover"
                 />
               )}
               {errors.picture && (
@@ -305,30 +305,29 @@ export function EditBook({ book }: { book: Book }) {
               )}
             </div>
 
-            <div className="grid gap-3">
+            <div className="grid md:gap-3 gap-1">
               <Label htmlFor="name-1">Nome</Label>
               <Input id="name-1" className="inputform" {...register("name")} />
             </div>
-            <div className="grid gap-3">
-              <Label htmlFor="data">Creato il:</Label>
+            <div className="grid md:gap-3 gap-1">
+              <Label htmlFor="created-at-book">Creato il:</Label>
               <Input
-                id="data"
+                id="created-at-book"
                 className="inputform"
-                name="data"
                 disabled
-                defaultValue="11/08/2025"
+                {...register("createdAt" as any)}
               />
             </div>
-            <div className="grid gap-3">
+            <div className="grid md:gap-3 gap-1">
               <Label htmlFor="descrizione">Descrizione</Label>
               <Input id="descrizione" className="inputform" {...register("description")} />
             </div>
-            <div className="grid gap-3">
+            <div className="grid md:gap-3 gap-1">
               <Label htmlFor="link">Link - Acquista</Label>
               <Input id="link" className="inputform" {...register("buyUrl")} />
             </div>
           </div>
-          <DialogFooter className="pt-7">
+          <DialogFooter className="md:pt-7 pt-3">
             <DialogClose asChild>
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>

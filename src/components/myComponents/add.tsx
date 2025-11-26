@@ -85,7 +85,7 @@ export function AddUser() {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="p-6 h-auto">
+      <DialogContent className="p-6 h-auto md:w-100 w-80">
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
           <DialogHeader>
             <DialogTitle className="font-medium">Crea Utente</DialogTitle>
@@ -137,7 +137,7 @@ export function AddUser() {
               <img
                 src={preview}
                 alt="Anteprima"
-                className="h-24 w-24 rounded-full object-cover border"
+                className="md:h-24 md:w-24 h-20 w-20 rounded-lg object-cover"
               />
             )}
             {errors.avatar && (
@@ -255,7 +255,7 @@ export function AddBook() {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="p-6 h-auto">
+      <DialogContent className="md:p-6 p-4 md:h-auto overflow-y-auto h-130 md:w-100 w-80">
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
           <DialogHeader>
             <DialogTitle className="font-medium">Aggiungi Libro</DialogTitle>
@@ -265,9 +265,8 @@ export function AddBook() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="grid gap-3">
+          <div className="grid md:gap-3 gap-1">
             <Label htmlFor="photo">Foto libro</Label>
-            {/* Hidden field registered with RHF to surface validation errors */}
             <input type="hidden" {...register("picture", { required: "La foto è obbligatoria" })} />
             <Input
               id="photo"
@@ -285,7 +284,7 @@ export function AddBook() {
             <div className="flex items-center gap-2 inputform">
               <Button
                 type="button"
-                className="w-70 pl-11 cursor-pointer"
+                className="w-full text-black cursor-pointer"
                 onClick={openFileDialog}
                 disabled={!!fileName}
               >
@@ -298,7 +297,7 @@ export function AddBook() {
                     clearFile();
                     setValue("picture" as any, "");
                   }}
-                  className="text-red-500 cursor-pointer hover:text-red-700 font-bold text-lg ml-8"
+                  className="text-red-500 cursor-pointer hover:text-red-700 font-bold text-lg -ml-8"
                 >
                   ×
                 </button>
@@ -308,7 +307,7 @@ export function AddBook() {
               <img
                 src={preview}
                 alt="Anteprima copertina"
-                className="h-24 w-24 rounded-full object-cover border"
+                className="md:h-24 md:w-24 h-20 w-20 rounded-lg object-cover"
               />
             )}
             {errors.picture && (
@@ -316,7 +315,7 @@ export function AddBook() {
             )}
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid md:gap-3 gap-1">
             <Label htmlFor="name">Nome</Label>
             <Input
               id="name"
@@ -328,7 +327,7 @@ export function AddBook() {
             )}
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid md:gap-3 gap-1">
             <Label htmlFor="descrizione">Descrizione</Label>
             <Input
               id="descrizione"
@@ -347,7 +346,7 @@ export function AddBook() {
             )}
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid md:gap-3 gap-1">
             <Label htmlFor="link">Link - Acquista</Label>
             <Input
               id="link"
@@ -365,7 +364,7 @@ export function AddBook() {
               <span className="errormessage">{errors.buyUrl.message}</span>
             )}
           </div>
-          <div className="grid gap-3">
+          <div className="grid md:gap-3 gap-1">
             <Label htmlFor="sellerId">Venditore</Label>
             <select
               id="sellerId"
@@ -385,7 +384,7 @@ export function AddBook() {
             )}
           </div>
 
-          <DialogFooter className="pt-7">
+          <DialogFooter className="md:pt-7">
             <DialogClose asChild>
               <Button className="whitebtn">Cancella</Button>
             </DialogClose>

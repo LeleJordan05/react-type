@@ -4,41 +4,23 @@ import "@/index.css";
 
 export function BookCardSkeleton() {
   return (
-    <Card >
-      <div className="flex flex-row items-center justify-between">
+    <Card className="card  flex lg:flex-row md:flex-row p-2 justify-between">
+      <div className="flex flex-wrap md:flex-row items-center justify-between w-full">
         {/* Immagine + Nome libro */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center lg:gap-4 gap-2">
           <Skeleton className="h-24 w-24 rounded-lg" /> {/* copertina */}
-          <Skeleton className="h-6 w-32" /> {/* titolo */}
+          <div className="flex flex-col gap-1">
+            <Skeleton className="h-5 w-32" /> {/* titolo */}
+            <Skeleton className="h-3 w-28" /> {/* data */}
+          </div>
         </div>
 
         {/* Bottoni / Azioni */}
-        <div className="flex items-center gap-3 mr-8">
-          <Skeleton
-            className="w-25
-           rounded-lg 
-           h-10"
-          />{" "}
-          {/* descrizione */}
-          <Skeleton
-            className="w-25
-           rounded-lg 
-           h-10"
-          />{" "}
-          {/* acquista */}
-          <Skeleton
-            className="w-25 
-           rounded-lg 
-           h-10"
-          />{" "}
-          {/* edit */}
-          <Skeleton
-            className="w-25
-           rounded-lg 
-           h-10
-           ;"
-          />{" "}
-          {/* delete */}
+        <div className="flex flex-wrap items-center justify-center mx-5 gap-3 lg:flex-row md:flex-row">
+          <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" /> {/* Descrizione */}
+          <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" /> {/* Acquista */}
+          <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" /> {/* Edit */}
+          <Skeleton className="h-10 w-22 lg:w-25 rounded-lg" /> {/* Delete */}
         </div>
       </div>
     </Card>

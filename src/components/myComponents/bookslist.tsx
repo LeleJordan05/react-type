@@ -14,8 +14,7 @@ export function BookList({ searchQuery = "" }: BookListProps) {
   if (isLoading) {
     return (
       <div
-        className="w-270
-           rounded-lg grid gap-4"
+        className="grid gap-4"
       >
         {Array.from({ length: 35 }).map((_, i) => (
           <BookCardSkeleton key={i} />

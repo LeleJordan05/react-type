@@ -19,8 +19,7 @@ export function UserList({ filterValue, searchQuery = "" }: UserListProps) {
   if (usersLoading || booksLoading) {
     return (
       <div
-        className="w-270
-           rounded-lg grid gap-4"
+        className="grid gap-4"
       >
         {Array.from({ length: 35 }).map((_, i) => (
           <UserCardSkeleton key={i} />
