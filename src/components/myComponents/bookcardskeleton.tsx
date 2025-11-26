@@ -5,7 +5,7 @@ import "@/index.css";
 export function BookCardSkeleton() {
   return (
     <Card className="card  flex lg:flex-row md:flex-row p-2 justify-between">
-      <div className="flex flex-wrap md:flex-row items-center justify-between w-full">
+      <div className="flex flex-wrap md:flex-row items-center justify-between w-full gap-2">
         {/* Immagine + Nome libro */}
         <div className="flex items-center lg:gap-4 gap-2">
           <Skeleton className="h-24 w-24 rounded-lg" /> {/* copertina */}
