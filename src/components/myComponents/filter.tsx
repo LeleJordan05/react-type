@@ -25,7 +25,7 @@ export function MyFilter({ filterValue, onFilterChange }: MyFilterProps) {
         <Button
           variant={"outline"}
           size="default"
-          className="filter px-4 py-2 h-10 w-10 flex justify-center items-center"
+          className="filter"
         >
           <Filter />
         </Button>

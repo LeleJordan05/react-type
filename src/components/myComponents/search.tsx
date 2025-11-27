@@ -22,7 +22,7 @@ export function SearchBarUsers({ value, onChange, placeholder }: SearchBarProps)
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder ?? "Cerca un utente..."}
-        className=" h-10 lg:mt-5 md:mt-5 mt-2 pl-10 rounded-lg bg-white border-none"
+        className=" h-10 md:mt-5 mt-2 pl-10 rounded-lg bg-white border-none"
       />
     </>
   );

@@ -21,7 +21,7 @@ type UserProps = {
 export function UserCard({ user }: UserProps) {
   return (
     <Card className="card flex flex-wrap md:flex-row p-2 justify-between">
-        <div className="flex items-center lg:gap-4 gap-2 pl-2">
+        <div className="flex items-center lg:gap-4 gap-2 pl-2 md:pl-0">
           <img
             src={
               user.avatar ||
@@ -37,7 +37,7 @@ export function UserCard({ user }: UserProps) {
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-3 sm:gap-5">
+        <div className="flex items-center justify-center gap-3 md:gap-5">
           <Dialog>
             <DialogTrigger asChild className="viewbooks bg-primary">
               <Button >Libri</Button>
@@ -80,7 +80,7 @@ export function BookCard({ book }: BookProps) {
           </div>
         </div>
 
-        <div className="flex md:flex-row flex-wrap items-center justify-center mx-5 gap-3 ">
+        <div className="flex md:flex-row flex-wrap items-center justify-center md: mx-5 gap-3 ">
           <Dialog>
             <DialogTrigger asChild className="viewbooks">
               <Button variant="outline">Descrizione</Button>

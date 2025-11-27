@@ -128,7 +128,7 @@
 
   .filter {
     @apply hover:text-blue-600 hover:scale-105 cursor-pointer 
-    lg:mt-5 md:mt-5 mt-2
+    md:mt-5 mt-2
     h-10
     w-10
     rounded-lg bg-primary border-none
@@ -205,9 +205,9 @@
            flex flex-row items-center rounded-lg justify-center 
            h-10
            mt-2
-           md:mt-5 lg:ml-7
+           md:mt-5 lg:ml-4
            md:mr-10
-           lg:mr-25 lg:w-45
+           lg:mr-30 lg:w-45
   }
 
   .dialogcard {

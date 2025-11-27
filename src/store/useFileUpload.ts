@@ -8,8 +8,18 @@ export function useFileUpload() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setPreview(URL.createObjectURL(file));
-      setFileName(file.name);
+      // Converti il file in base64 (data URL) per salvare permanentemente
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setPreview(base64String);
+        setFileName(file.name);
+      };
+      reader.onerror = () => {
+        setPreview(null);
+        setFileName(null);
+      };
+      reader.readAsDataURL(file);
     } else {
       setPreview(null);
       setFileName(null);
